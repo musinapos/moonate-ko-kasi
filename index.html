@@ -1,39 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOONATE KO KASI</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f3f4f6}
-.top{background:#111827;color:#fff;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
-.top b{font-size:18px}.top b span{color:#f97316}
-.hero{background:linear-gradient(135deg,#f97316,#111827);padding:20px;text-align:center;color:#fff}
-.hero .bike{font-size:60px}
-.hero h1{font-size:26px;margin:8px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;padding:12px;max-width:1100px;margin:auto}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #0002}
-.card-head{background:#111827;color:#fff;padding:10px;display:flex;justify-content:space-between;font-weight:bold;font-size:13px}
-.pr{background:#f97316;color:#000;padding:3px 7px;border-radius:4px}
-.card img{width:100%;height:140px;object-fit:cover}
-.card-body{padding:10px;font-size:12px}
-.card-body button{width:100%;margin-top:8px;padding:10px;background:#111827;color:#fff;border:none;border-radius:6px;font-weight:bold}
-.side{max-width:1100px;margin:auto;padding:12px}
-.cartBox{background:#fff;padding:12px;border-radius:12px;box-shadow:0 2px 8px #0002}
-.total{background:#111827;color:#fff;padding:12px;border-radius:8px;text-align:center;margin:8px 0;font-weight:bold}
-input,textarea,select{width:100%;padding:10px;margin:5px 0;border:1px solid #ccc;border-radius:6px}
-.btn{width:100%;padding:12px;border:none;border-radius:8px;font-weight:bold;margin-top:6px}
-.order{background:#f97316}.clear{background:#ef4444;color:#fff}
-</style>
-</head>
-<body>
-<div class="top"><b>MOONATE <span>KO KASI</span></b><button onclick="let p=prompt('Password');if(p=='moonate2023'){let n=prompt('Menu1 price? Current '+localStorage.getItem('m1'));if(n){localStorage.setItem('m1',n);location.reload()}}" style="background:#f97316;border:none;padding:5px 8px;border-radius:4px;font-weight:bold;font-size:10px">EDIT</button></div>
-<div class="hero"><div style="background:#fff;color:#111;display:inline-block;padding:4px 10px;border-radius:15px;font-size:10px;font-weight:bold">EST 2023 • PROUDLY KASI</div><div class="bike">🛵💨</div><h1>MOONATE KO KASI</h1><p>🏍️ Motorbike Delivery 20-35min • FREE within 3km • Capitec Pay</p></div>
-<div style="background:#111827;color:#fff;text-align:center;padding:8px;font-weight:bold;font-size:12px">WhatsApp 0799073779 • <span style="color:#f97316">FREE within 3km • After 3km +R20</span></div>
-<div class="grid" id="menuGrid"></div>
-<div class="side"><div class="cartBox"><h3>🛒 YOUR ORDER</h3><div id="cartList">Cart empty</div><select id="dist" onchange="renderCart()"><option value="0">Within 3km FREE</option><option value="20">After 3km +R20</option></select><div class="total" id="totalBox">TOTAL: R0</div><input id="cName" placeholder="Your Name"><input id="cPhone" placeholder="Phone"><textarea id="cAddr" placeholder="Delivery Address"></textarea><button class="btn order" onclick="placeOrder()">PLACE ORDER 🏍️</button><button class="btn clear" onclick="cart=[];renderCart()">CLEAR</button></div></div>
-<script>
-let PRICES={m1:+(localStorage.getItem('m1')||150),m2:+(localStorage.getItem('m2')||80),m3:+(localStorage.getItem('m3')||80),m4:+(localStorage.getItem('m4')||70)};
-let BANK={acc:"YOUR CAPITEC ACCOUNT",holder:"YOUR NAME",phone:"0799073779"};
-let MENUS=[{n:'MENU 1 • SNACK BASKET BOX',k:'m1',d:'4 grillers + 400g ribs + 2 wings + 4 pies + 4 eggs + fries',i:'https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600'},{n:'MENU 2 • REAL PAP',k:'m2',d:'Steak Wors Chakalaka + Real Pap',i:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600'},{n:'
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MOONATE KO KASI</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#f3f4f6}.top{background:#111827;color:#fff;padding:14px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:20}.top b{font-size:20px}.top b span{color:#f97316}.hero{background:linear-gradient(135deg,#f97316,#111827);padding:25px;text-align:center;color:#fff}.bike{font-size:70px}.hero h1{font-size:30px}.strip{background:#111827;color:#fff;text-align:center;padding:10px;font-size:12px;border-top:3px solid #f97316}.strip span{color:#f97316}.wrap{max-width:1100px;margin:auto;padding:12px;display:flex;gap:12px}.left{flex:2.5}.right{flex:1;position:sticky;top:70px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 12px #0001}.card-head{background:#111827;color:#fff;padding:10px;display:flex;justify-content:space-between;font-weight:bold;font-size:12px}.price{background:#f97316;color:#000;padding:4px 8px;border-radius:5px}.card img{width:100%;height:150px;object-fit:cover}.card-body{padding:10px;font-size:12px}.addBtn{width:100%;padding:11px;margin-top:8px;background:#111827;color:#fff;border:none;border-radius:8px;font-weight:bold}.cartBox{background:#fff;padding:14px;border-radius:14px;box-shadow:0 4px 12px #0001}.totalBox{background:#111827;color:#fff;padding:12px;border-radius:8px;text-align:center;margin:10px 0;font-weight:bold}input,textarea,select{width:100%;padding:10px;margin:5px 0;border:1px solid #ccc;border-radius:6px}.btn{width:100%;padding:12px;border:none;border-radius:8px;font-weight:bold;margin-top:6px}.order{background:#f97316}.clear{background:#ef4444;color:#fff}@media(max-width:800px){.wrap{flex-direction:column}.right{position:static}}</style></head><body><div class="top"><b>MOONATE <span>KO KASI</span></b><span style="background:#f97316;color:#000;padding:4px 8px;border-radius:4px;font-size:10px;font-weight:bold">LIVE</span></div><div class="hero"><div style="background:#fff;color:#111;display:inline-block;padding:4px 10px;border-radius:15px;font-size:10px;font-weight:bold">EST 2023 • PROUDLY KASI</div><div class="bike">🛵💨</div><h1>MOONATE KO KASI</h1><p style="background:#111827;color:#f97316;display:inline-block;padding:6px 12px;border-radius:6px;margin-top:8px;font-size:12px;font-weight:bold">🏍️ Motorbike Delivery • FREE within 3km</p></div><div class="strip">WhatsApp: <span>0799073779</span> • FREE within 3km • After 3km +R20 • Capitec PayShap</div><div class="wrap"><div class="left"><div class="grid" id="menuGrid"></div></div><div class="right"><div class="cartBox"><h3>🛒 YOUR ORDER</h3><div id="cartList" style="margin-top:8px;font-size:12px;color:#666">Cart empty</div><select id="dist" onchange="updateTotal()"><option value="0">Within 3km - FREE</option><option value="20">After 3km - +R20</option></select><div class="totalBox" id="totalBox">TOTAL: R0</div><div style="background:#fff7ed;border:1px dashed #f97316;padding:8px;border-radius:8px;font-size:11px"><b>PAYMENT:</b><br>• CASH on Delivery<br>• Capitec EFT Acc: <b>1234567890</b> (change to yours)<br>• PayShap: <b>0799073779</b></div><input id="cName" placeholder="Your Name"><input id="cPhone" placeholder="Phone"><textarea id="cAddr" placeholder="Address"></textarea><button class="btn order" onclick="placeOrder()">✅ PLACE ORDER - BIKE COMING 🏍️</button><button class="btn clear" onclick="clearCart()">CLEAR</button></div></div></div><script>
+const MENUS=[{n:"MENU 1 • SNACK BASKET BOX",p:150,d:"4 grillers + 400g ribs + 2 wings + 4 pies + 4 eggs + fries",i:"https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600"},{n:"MENU 2 • REAL PAP",p:80,d:"Steak Wors Chakalaka + Pap",i:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600"},{n:"MENU 3 • TOASTED DACKWOOD",p:80,d:"Toasted 4 slice tower + chips",i:"https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?w=600"},{n:"MENU 4 • 2x HOTDOGS",p:70,d:"2x Hotdogs + Chips",i:"https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=600"}];
+let cart=[];
+function renderMenu(){let h="";MENUS.forEach(m=>{h+='<div class="card"><div class="card-head"><span>'+m.n+'</span><span class="price">R'+m.p+'</span></div><img src="'+m.i+'"><div class="card-body">'+m.d+'<button class="addBtn" onclick="addCart(\''+m.n+'\','+m.p+')">ADD TO CART + R'+m.p+'</button></div></div>'});document.getElementById("menuGrid").innerHTML=h}
+function addCart(n,p){let f=cart.find(x=>x.n==n);if(f)f.q++;else cart.push({n:n,p:p,q:1});renderCart()}
+function renderCart(){let html="",sub=0;cart.forEach((it,i)=>{let l=it.p*it.q;sub+=l;html+='<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee"><span>'+it.n+' x'+it.q+'</span><span>R'+l+' <b onclick="cart.splice('+i+',1);renderCart()" style="color:red">X</b></span></div>'});document.getElementById("cartList").innerHTML=html||"Cart empty";let fee=parseInt(document.getElementById("dist").value)||0;document.getElementById("totalBox").innerText="TOTAL: R"+(sub+fee)}
+function clearCart(){cart=[];renderCart()}
+function updateTotal(){renderCart()}
+function placeOrder(){if(cart.length==0)return alert("Cart empty!");if(!cName.value||!cPhone.value||!cAddr.value)return alert("Enter Name Phone Address");let fee=parseInt(dist.value)||0,sub=cart.reduce((s,c)=>s+c.p*c.q,0),total=sub+fee;let m=prompt("PAYMENT:\n1=CASH\n2=CAPITEC EFT Acc 1234567890\n3=PayShap 0799073779\n\nType 1,2,3");let pay=m=="2"?"CAPITEC EFT Acc 1234567890 Holder MOONATE Ref "+cPhone.value+" POP to 0799073779":m=="3"?"PayShap R"+total+" to 0799073779":"CASH R"+total;let txt="MOONATE ORDER%0AName:"+cName.value+"%0APhone:"+cPhone.value+"%0AAddr:"+cAddr.value+"%0A"+cart.map(c=>c.n+" x"+c.q+"=R"+c.p*c.q).join("%0A")+"%0ATOTAL R"+total+"%0A"+pay+"%0ABike 20-35min";window.open("https://wa.me/27799073779?text="+txt,"_blank")}
+renderMenu();renderCart();
+</script></body></html>
