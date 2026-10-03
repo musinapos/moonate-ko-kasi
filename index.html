@@ -1,0 +1,60 @@
+// ===== MAIN SOURCE - EDIT PRICES + YOUR BANK =====
+let PRICES = JSON.parse(localStorage.getItem('mk_prices')) || {m1:150,m2:80,m3:80,m4:70,fee:20};
+// PUT YOUR CAPITEC DETAILS HERE - CUSTOMER WILL SEE THIS
+let BANK_DETAILS = {
+  bank: "Capitec Bank",
+  account: "1234567890",  // <-- CHANGE TO YOUR REAL ACCOUNT NUMBER
+  holder: "MOONATE KO KASI", // <-- YOUR NAME ON ACCOUNT
+  phone: "0799073779", // Your PayShap number
+  shapId: "0799073779" // Same as phone for PayShap
+};
+
+let MENUS=[
+{name:'MENU 1 • SNACK BASKET BOX',priceKey:'m1',desc:'4 cheese grillers + 400g ribs + 2 wings + 4 pies + 4 eggs + sauce + fries',img:'https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600'},
+{name:'MENU 2 • REAL PAP',priceKey:'m2',desc:'Steak Wors Chakalaka + Real Pap',img:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600'},
+{name:'MENU 3 • TOASTED DACKWOOD',priceKey:'m3',desc:'Toasted 4 slice tower + chips',img:'https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?w=600'},
+{name:'MENU 4 • 2x HOTDOGS',priceKey:'m4',desc:'2x Hotdogs + Chips',img:'https://images.unsplash.com/photo-1612392062631-94dd858cba88?w=600'}
+];
+
+function renderMenu(){
+let h='';
+MENUS.forEach(m=>{
+let price=PRICES[m.priceKey];
+h+=`<div class="card"><div class="card-head"><span>${m.name}</span><span class="pr">R${price}</span></div><img src="${m.img}"><div class="card-body">${m.desc}<button onclick="addItem('${m.name}',${price})">ADD TO CART + R${price}</button></div></div>`;
+});
+document.getElementById('menuGrid').innerHTML=h;
+}
+
+let cart=[];
+function addItem(n,p){let f=cart.find(x=>x.n==n);if(f)f.q++;else cart.push({n,p,q:1});renderCart()}
+function renderCart(){
+let html='',sub=0;
+cart.forEach((it,i)=>{let line=it.p*it.q;sub+=line;html+=`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee"><span>${it.n} x${it.q}</span><span>R${line} <span onclick="cart.splice(${i},1);renderCart()" style="color:red;cursor:pointer">X</span></span></div>`});
+document.getElementById('cartList').innerHTML=html||'Cart empty';
+let fee=parseInt(document.getElementById('dist').value)||0;
+document.getElementById('totalBox').innerText=`TOTAL: R${sub+fee} ${fee==0?'(FREE)':''}`;
+}
+function clearAll(){cart=[];renderCart()}
+function placeOrder(){
+if(cart.length==0)return alert('Cart empty!');
+let name=cName.value,phone=cPhone.value,addr=cAddr.value;
+if(!name||!phone||!addr)return alert('Enter Name, Phone, Address');
+let fee=parseInt(dist.value)||0,sub=cart.reduce((s,c)=>s+c.p*c.q,0),total=sub+fee;
+
+let method=prompt('PAYMENT METHOD:\n1 = CASH on Delivery (pay rider)\n2 = CAPITEC EFT (transfer)\n3 = PayShap INSTANT to 0799073779\n\nType 1, 2 or 3:');
+let payText='';
+if(method=='2'){
+payText=`PAYMENT: CAPITEC EFT%0ABank: ${BANK_DETAILS.bank}%0AAccount: ${BANK_DETAILS.account}%0AHolder: ${BANK_DETAILS.holder}%0AReference: ${phone}%0A%0A⚠️ Send POP to 0799073779`;
+} else if(method=='3'){
+payText=`PAYMENT: PayShap INSTANT%0APayShap to: ${BANK_DETAILS.shapId}%0AName: ${BANK_DETAILS.holder}%0A%0A⚠️ PayShap R${total} to ${BANK_DETAILS.shapId} then send screenshot`;
+} else {
+payText=`PAYMENT: CASH ON DELIVERY%0ARider will collect R${total}`;
+}
+
+let txt=`🔥 MOONATE KO KASI ORDER 🔥%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${addr}%0A%0A${cart.map(c=>`${c.n} x${c.q}=R${c.p*c.q}`).join('%0A')}%0A%0ATOTAL: R${total}%0A${payText}%0A%0A🏍️ Bike 20-35min`;
+window.open(`https://wa.me/27799073779?text=${txt}`,'_blank');
+}
+function openAdmin(){let pw=prompt('Admin password:');if(pw!=='moonate2023')return alert('Wrong!');p1.value=PRICES.m1;p2.value=PRICES.m2;p3.value=PRICES.m3;p4.value=PRICES.m4;pFee.value=PRICES.fee;adminPanel.style.display='block';}
+function closeAdmin(){adminPanel.style.display='none';}
+function saveP(){PRICES={m1:+p1.value,m2:+p2.value,m3:+p3.value,m4:+p4.value,fee:+pFee.value};localStorage.setItem('mk_prices',JSON.stringify(PRICES));renderMenu();renderCart();closeAdmin();alert('Prices saved!');}
+renderMenu();renderCart();
