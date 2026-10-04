@@ -1,57 +1,36 @@
 const menu = [
-{id:1, name:"Classic Burger + Small Chips", price:55, img:"images/menu1.jpg"},
-{id:2, name:"Cheesy Burger + Small Chips", price:65, img:"images/menu2.jpg"},
-{id:3, name:"Friends Box 4 Burgers + Big Chips", price:160, img:"images/menu3.jpg"},
-{id:4, name:"Chicken Gatsby Box", price:130, img:"images/menu4.jpg"},
-{id:5, name:"Steak Gatsby Box", price:140, img:"images/menu5.jpg"},
-{id:6, name:"Chicken & Steak GIANT + Chips", price:140, img:"images/menu6.jpg"},
-{id:7, name:"Large Chips", price:35, img:"images/menu7.jpg"},
+{id:1, name:"Classic Burger + Small Chips", price:55, img:"menu1.jpg"},
+{id:2, name:"Cheesy Burger + Small Chips", price:65, img:"menu2.jpg"},
+{id:3, name:"Friends Box 4 Burgers + Big Chips", price:160, img:"menu3.jpg"},
+{id:4, name:"Chicken Gatsby Box", price:130, img:"menu4.jpg"},
+{id:5, name:"Steak Gatsby Box", price:140, img:"menu5.jpg"},
+{id:6, name:"Chicken & Steak GIANT + Chips", price:140, img:"menu6.jpg"},
+{id:7, name:"Large Chips", price:35, img:"menu7.jpg"},
 ];
-
-let cart = [];
-
+let cart=[];
 function loadMenu(){
-const grid = document.getElementById('menu-grid');
+const grid=document.getElementById('menu-grid'); grid.innerHTML="";
 menu.forEach(m=>{
-grid.innerHTML += `
-<div class="item-card">
-<img src="${m.img}" onerror="this.src='https://via.placeholder.com/300x200?text=MOONATE'">
-<h3>${m.name}</h3>
-<p>R${m.price}</p>
-<button onclick="addToCart(${m.id})">ADD TO CART</button>
-</div>`;
+grid.innerHTML+=`<div class="item-card"><img src="${m.img}"><h3>${m.name}</h3><p>R${m.price}</p><button onclick="addToCart(${m.id})">ADD TO CART</button></div>`;
 });
 }
-
-function addToCart(id){
-const item = menu.find(m=>m.id===id);
-cart.push(item);
-updateCart();
-}
-
+function addToCart(id){cart.push(menu.find(m=>m.id===id));updateCart();}
 function updateCart(){
-document.getElementById('cart-count').innerText = cart.length;
-let total = cart.reduce((sum,i)=>sum+i.price,0);
-document.getElementById('cart-total').innerText = total;
-document.getElementById('modal-total').innerText = total;
-let cartDiv = document.getElementById('cart-items');
-cartDiv.innerHTML = "";
-cart.forEach((c,i)=>{
-cartDiv.innerHTML += `<div><span>${c.name}</span><b>R${c.price}</b></div>`;
-});
+document.getElementById('cart-count').innerText=cart.length;
+let t=cart.reduce((s,i)=>s+i.price,0);
+document.getElementById('cart-total').innerText=t;
+document.getElementById('modal-total').innerText=t;
+document.getElementById('cart-items').innerHTML=cart.map(c=>`<div style="display:flex;justify-content:space-between"><span>${c.name}</span><b>R${c.price}</b></div>`).join('');
 }
-
 function openCart(){document.getElementById('cart-modal').style.display='block';}
 function closeCart(){document.getElementById('cart-modal').style.display='none';}
-
 function sendWhatsApp(){
-let name = document.getElementById('cust-name').value;
-let addr = document.getElementById('cust-address').value;
-let total = cart.reduce((sum,i)=>sum+i.price,0);
-let text = `Hello MOONATE KO KASI 🔥%0A%0AOrder from: ${name}%0AAddress: ${addr}%0A%0A`;
-cart.forEach(c=>{text += `- ${c.name} R${c.price}%0A`});
-text += `%0ATOTAL: R${total}`;
+let name=document.getElementById('cust-name').value;
+let addr=document.getElementById('cust-address').value;
+let total=cart.reduce((s,i)=>s+i.price,0);
+let text=`Hello MOONATE KO KASI%0AName:${name}%0AAddr:${addr}%0A`;
+cart.forEach(c=>{text+=`-${c.name} R${c.price}%0A`;});
+text+=`TOTAL R${total}`;
 window.open(`https://wa.me/27799073779?text=${text}`,'_blank');
 }
-
 loadMenu();
