@@ -1,34 +1,57 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MOONATE KO KASI - SOUND</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#0a0a0a;color:#fff}.top{background:#111827;padding:14px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:99;border-bottom:3px solid #f97316}.top b{font-size:22px}.top b span{color:#f97316}.hero{background:#111;padding:15px;text-align:center}.hero img{width:100%;max-width:750px;border-radius:14px;border:3px solid #f97316;margin:12px auto;display:block}.hero h1{font-size:36px;font-weight:900;color:#f97316}.strip{background:#f97316;color:#000;text-align:center;padding:12px;font-weight:900;font-size:13px}.wrap{max-width:1250px;margin:auto;padding:12px;display:flex;gap:12px}.left{flex:2.6}.right{flex:1;position:sticky;top:70px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}.card{background:#1a1a1a;border-radius:14px;overflow:hidden;border:1px solid #333}.card-head{background:#111827;padding:12px;display:flex;justify-content:space-between;border-bottom:2px solid #f97316}.title{font-weight:900;font-size:12px}.price{background:#f97316;color:#000;padding:6px 10px;border-radius:6px;font-weight:900}.card img{width:100%;height:190px;object-fit:cover}.card-body{padding:12px;font-size:12px;color:#ccc}.addBtn{width:100%;padding:14px;margin-top:10px;background:#f97316;color:#000;border:none;border-radius:10px;font-weight:900;font-size:14px}.cartBox{background:#fff;color:#000;padding:14px;border-radius:14px}.totalBox{background:#111827;color:#f97316;padding:14px;border-radius:10px;text-align:center;margin:10px 0;font-weight:900;font-size:22px}.payBtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}.payBtns button{padding:12px;border:2px solid #111827;border-radius:8px;font-weight:900;font-size:11px;background:#fff}.payBtns button.active{background:#f97316;border-color:#f97316;color:#000}input,textarea,select{width:100%;padding:12px;margin:5px 0;border:1px solid #ccc;border-radius:8px}.btn{width:100%;padding:14px;border:none;border-radius:10px;font-weight:900;margin-top:6px;font-size:14px}.order{background:#f97316;color:#000}.clear{background:#ef4444;color:#fff}@media(max-width:850px){.wrap{flex-direction:column}.right{position:static}}</style></head><body><div class="top"><b>MOONATE <span>KO KASI</span></b><span style="background:#f97316;color:#000;padding:6px 10px;border-radius:6px;font-size:11px;font-weight:900">🔊 SOUND ON • LIVE</span></div><div class="hero"><h1>MOONATE KO KASI</h1><p style="color:#f97316;font-weight:900">🔔 TAP = SOUND! • FREE DELIVERY • HOT BOX 🔥</p><img src="./giant-both.jpg" onerror="this.src='./fullmenu.jpg'"></div><div class="strip">📞 0799073779 • TAP BUTTONS = SOUND! • GIANT ROLLS R140 • FREE DELIVERY</div><div class="wrap"><div class="left"><div class="grid" id="grid"></div></div><div class="right"><div class="cartBox"><h3>🛒 YOUR ORDER 🔊</h3><div id="cart" style="margin-top:8px;font-size:13px;color:#666">Cart empty</div><select id="dist" onchange="render()"><option value="0">Within 3km - FREE</option><option value="20">After 3km - +R20</option></select><div class="totalBox" id="tot">TOTAL: R0</div><b style="font-size:12px">PAYMENT:</b><div class="payBtns"><button id="p1" class="active" onclick="playSound('click');setP(1)">💵 CASH</button><button id="p2" onclick="playSound('click');setP(2)">💳 CARD</button><button id="p3" onclick="playSound('click');setP(3)">🏦 CAPITEC</button><button id="p4" onclick="playSound('click');setP(4)">⚡ PayShap</button></div><input id="cName" placeholder="Your Name"><input id="cPhone" placeholder="Phone"><textarea id="cAddr" placeholder="Address"></textarea><button class="btn order" onclick="playSound('order');order()">✅ PLACE ORDER - BIKE COMING 🏍️</button><button class="btn clear" onclick="playSound('clear');clearC()">CLEAR</button></div></div></div><script>
-let audioCtx;
-function initSound(){if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)()}}
-function playSound(type){
-initSound();
-let o=audioCtx.createOscillator(),g=audioCtx.createGain();
-o.connect(g);g.connect(audioCtx.destination);
-if(type=='add'){o.frequency.value=800;g.gain.value=0.3;o.type='sine';o.start();g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+0.2);o.stop(audioCtx.currentTime+0.2)}
-else if(type=='order'){o.frequency.value=600;g.gain.value=0.4;o.type='triangle';o.start();o.frequency.linearRampToValueAtTime(1200,audioCtx.currentTime+0.3);g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+0.4);o.stop(audioCtx.currentTime+0.4)}
-else if(type=='clear'){o.frequency.value=400;g.gain.value=0.3;o.type='sawtooth';o.start();o.frequency.linearRampToValueAtTime(200,audioCtx.currentTime+0.2);g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+0.3);o.stop(audioCtx.currentTime+0.3)}
-else{o.frequency.value=1000;g.gain.value=0.2;o.type='sine';o.start();g.gain.exponentialRampToValueAtTime(0.01,audioCtx.currentTime+0.15);o.stop(audioCtx.currentTime+0.15)}
-}
-let pay=1;
-const MENUS=[
-{n:"MENU 1 • SNACK BOX",p:150,d:"4 cheese grillers • 400g ribs • 2 wings • 4 pies • 4 eggs • sauce • fries",i:"./menu1.jpg"},
-{n:"MENU 2 • REAL PAP Steak Wors Chaka",p:80,d:"Real white stiff pap only - not rice • steak • wors • chakalaka",i:"./menu2.jpg"},
-{n:"MENU 3 • TOASTED Dackwood + Chips",p:80,d:"Toasted 4 slice tower • cheese • egg • lettuce • chips",i:"./menu3.jpg"},
-{n:"MENU 4 • 2x HOTDOGS + Chips",p:70,d:"2 hotdogs • buns • vienna • chips",i:"./menu4.jpg"},
-{n:"MENU 5 • GIANT STEAK CHEESE SUB - HIT! 🔊",p:140,d:"🔥 HIT! Steak + cheese + garlic - SAME PIC",i:"./giant-steak.jpg"},
-{n:"MENU 6 • GIANT CHICKEN CHEESE SUB - HIT! 🔊",p:140,d:"🔥 HIT! Chicken + cheese + garlic - SAME PIC",i:"./giant-chicken.jpg"},
-{n:"MENU 7 • CLASSIC BEEF BURGER + CHIPS",p:65,d:"Beef + Chips Aside",i:"./fullmenu.jpg"},
-{n:"MENU 8 • CHEESE BURGER + CHIPS",p:70,d:"Cheese + Chips Aside",i:"./fullmenu.jpg"},
-{n:"MENU 9 • 4x BURGERS + CHIPS",p:150,d:"4 Burgers + Chips - Family",i:"./fullmenu.jpg"}
+const menu = [
+{id:1, name:"Classic Burger + Small Chips", price:55, img:"images/menu1.jpg"},
+{id:2, name:"Cheesy Burger + Small Chips", price:65, img:"images/menu2.jpg"},
+{id:3, name:"Friends Box 4 Burgers + Big Chips", price:160, img:"images/menu3.jpg"},
+{id:4, name:"Chicken Gatsby Box", price:130, img:"images/menu4.jpg"},
+{id:5, name:"Steak Gatsby Box", price:140, img:"images/menu5.jpg"},
+{id:6, name:"Chicken & Steak GIANT + Chips", price:140, img:"images/menu6.jpg"},
+{id:7, name:"Large Chips", price:35, img:"images/menu7.jpg"},
 ];
-let cart=[];
-function draw(){let h="";MENUS.forEach(m=>{h+=`<div class="card"><div class="card-head"><span class="title">${m.n}</span><span class="price">R${m.p}</span></div><img src="${m.i}" onerror="this.src='./fullmenu.jpg'"><div class="card-body">${m.d}<button class="addBtn" onclick="playSound('add');addC('${m.n.replace(/'/g,'')}',${m.p})">ADD TO CART 🔊 R${m.p}</button></div></div>`});document.getElementById("grid").innerHTML=h}
-function addC(n,p){let f=cart.find(x=>x.n==n);if(f)f.q++;else cart.push({n,p,q:1});render()}
-function render(){let html="",sub=0;cart.forEach((it,i)=>{let l=it.p*it.q;sub+=l;html+=`<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #eee"><span>${it.n} x${it.q}</span><span>R${l} <b onclick="playSound('clear');cart.splice(${i},1);render()" style="color:red;cursor:pointer"> X</b></span></div>`});document.getElementById("cart").innerHTML=html||"Cart empty";let fee=parseInt(dist.value)||0;document.getElementById("tot").innerText="TOTAL: R"+(sub+fee)}
-function clearC(){cart=[];render()}
-function setP(n){pay=n;document.querySelectorAll(".payBtns button").forEach(b=>b.classList.remove("active"));document.getElementById("p"+n).classList.add("active")}
-function order(){if(cart.length==0)return alert("Cart empty!");if(!cName.value||!cPhone.value||!cAddr.value)return alert("Enter Name Phone Address");let fee=parseInt(dist.value)||0,sub=cart.reduce((s,c)=>s+c.p*c.q,0),total=sub+fee;let payT=["CASH","CARD machine","CAPITEC POP 0799073779","PayShap 0799073779"][pay-1];let txt=`🔥 MOONATE KO KASI 🔥%0AName:${cName.value}%0APhone:${cPhone.value}%0AAddr:${cAddr.value}%0A${cart.map(c=>c.n+" x"+c.q+"=R"+c.p*c.q).join("%0A")}%0ATOTAL R${total}%0APAY: ${payT}%0A🏍️ Bike 20-35min`;window.open("https://wa.me/27799073779?text="+txt,"_blank")}
-draw();render();
-document.addEventListener('click',initSound,{once:true});
-</script></body></html>
+
+let cart = [];
+
+function loadMenu(){
+const grid = document.getElementById('menu-grid');
+menu.forEach(m=>{
+grid.innerHTML += `
+<div class="item-card">
+<img src="${m.img}" onerror="this.src='https://via.placeholder.com/300x200?text=MOONATE'">
+<h3>${m.name}</h3>
+<p>R${m.price}</p>
+<button onclick="addToCart(${m.id})">ADD TO CART</button>
+</div>`;
+});
+}
+
+function addToCart(id){
+const item = menu.find(m=>m.id===id);
+cart.push(item);
+updateCart();
+}
+
+function updateCart(){
+document.getElementById('cart-count').innerText = cart.length;
+let total = cart.reduce((sum,i)=>sum+i.price,0);
+document.getElementById('cart-total').innerText = total;
+document.getElementById('modal-total').innerText = total;
+let cartDiv = document.getElementById('cart-items');
+cartDiv.innerHTML = "";
+cart.forEach((c,i)=>{
+cartDiv.innerHTML += `<div><span>${c.name}</span><b>R${c.price}</b></div>`;
+});
+}
+
+function openCart(){document.getElementById('cart-modal').style.display='block';}
+function closeCart(){document.getElementById('cart-modal').style.display='none';}
+
+function sendWhatsApp(){
+let name = document.getElementById('cust-name').value;
+let addr = document.getElementById('cust-address').value;
+let total = cart.reduce((sum,i)=>sum+i.price,0);
+let text = `Hello MOONATE KO KASI 🔥%0A%0AOrder from: ${name}%0AAddress: ${addr}%0A%0A`;
+cart.forEach(c=>{text += `- ${c.name} R${c.price}%0A`});
+text += `%0ATOTAL: R${total}`;
+window.open(`https://wa.me/27799073779?text=${text}`,'_blank');
+}
+
+loadMenu();
