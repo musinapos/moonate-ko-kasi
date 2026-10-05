@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOONATE KO KASI POS 🌙</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
+*{font-family:'Poppins',sans-serif;margin:0;padding:0;box-sizing:border-box}
+body{background:#111;color:white}
+.login-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;padding:20px}
+.login-box{background:white;color:#111;padding:30px;border-radius:20px;width:100%;max-width:350px;text-align:center}
+.login-box h1{font-size:22px;margin-bottom:10px}
+.login-box input{width:100%;padding:15px;margin:10px 0;border:2px solid #FF8C42;border-radius:12px;font-size:20px;text-align:center;letter-spacing:5px}
+.login-box button{width:100%;padding:15px;background:#FF8C42;border:none;border-radius:12px;font-weight:800;font-size:16px;margin-top:10px}
+.pos-header{background:linear-gradient(135deg,#E86A17,#CC5500);padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.pos-header h2{font-size:16px}
+.sales-badge{background:#111;color:#FF8C42;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800}
+.pos-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.pos-item{background:white;color:#111;border-radius:14px;overflow:hidden;text-align:center;padding-bottom:8px;box-shadow:0 3px 10px rgba(0,0,0,0.3)}
+.pos-item img{width:100%;height:90px;object-fit:cover}
+.pos-item h4{font-size:12px;margin:5px;padding:0 4px;min-height:30px}
+.pos-item .price{color:#CC5500;font-weight:800;font-size:15px}
+.pos-item button{background:#111;color:white;border:none;width:90%;padding:8px;border-radius:8px;margin-top:5px;font-weight:700;font-size:11px}
+.cart-panel{position:fixed;bottom:0;left:0;right:0;background:white;color:#111;border-radius:20px 20px 0 0;max-height:75vh;overflow:auto;box-shadow:0 -5px 20px rgba(0,0,0,0.5);display:none;z-index:20}
+.cart-panel.show{display:block}
+.cart-head{padding:15px;background:#FFF7ED;border-radius:20px 20px 0 0;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
+.cart-items{padding:10px 15px}
+.cart-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #ddd;font-size:13px}
+.cart-total{padding:15px;background:#111;color:white;margin:10px;border-radius:12px}
+.cart-total .row{display:flex;justify-content:space-between;margin:5px 0}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 15px 15px}
+.pay-grid button{padding:14px;border:none;border-radius:10px;font-weight:800;font-size:12px}
+.btn-cash{background:#111;color:white}
+.btn-card{background:#FF8C42;color:#111}
+.btn-credit{background:#E0E0E0;color:#111}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#111;padding:10px 15px;display:flex;justify-content:space-between;align-items:center;border-top:3px solid #FF8C42;z-index:15}
+.bottom-bar button{background:#FF8C42;color:#111;border:none;padding:12px 20px;border-radius:10px;font-weight:800}
+</style>
+</head>
+<body>
+<div id="login" class="login-screen">
+<div class="login-box">
+<h1>🌙 MOONATE KO KASI<br>POS SYSTEM</h1>
+<p style="font-size:12px;color:#666;margin:10px 0">Enter PIN to Open Till</p>
+<input type="password" id="pin" placeholder="****" maxlength="4">
+<button onclick="login()">OPEN TILL 🔓</button>
+<p style="font-size:10px;color:#999;margin-top:15px">Default PIN: 1234</p>
+</div>
+</div>
+<div id="pos" style="display:none">
+<div class="pos-header">
+<h2>🌙 MOONATE POS</h2>
+<div style="display:flex;gap:8px;align-items:center">
+<span class="sales-badge">Today: R<span id="today-sales">0</span></span>
+<button onclick="showReport()" style="background:#111;color:white;border:none;padding:6px 10px;border-radius:8px;font-size:11px">📊 REPORT</button>
+</div>
+</div>
+<div class="pos-grid" id="pos-grid"></div>
+<div style="height:80px"></div>
+<div class="bottom-bar">
+<div>🧾 <span id="cart-count">0</span> Items | R<span id="cart-total">0</span></div>
+<button onclick="openCart()">CHECKOUT 💰</button>
+</div>
+<div id="cart-panel" class="cart-panel">
+<div class="cart-head"><b>🧾 RECEIPT</b><span onclick="closeCart()" style="font-size:20px;cursor:pointer">❌</span></div>
+<div id="cart-list" class="cart-items"></div>
+<div class="cart-total"><div class="row" style="font-size:18px;font-weight:800"><span>TOTAL:</span><span>R<span id="final-total">0</span></span></div></div>
+<div class="pay-grid">
+<button class="btn-cash" onclick="completeSale('CASH')">💵 CASH</button>
+<button class="btn-card" onclick="completeSale('CARD')">💳 CARD</button>
+<button class="btn-credit" onclick="completeSale('CREDIT')">📝 CREDIT</button>
+</div>
+<button onclick="printReceipt()" style="width:90%;margin:0 5% 15px;padding:12px;background:white;color:#111;border:2px solid #111;border-radius:10px;font-weight:800">🖨️ PRINT RECEIPT</button>
+</div>
+<div id="report" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#111;z-index:30;overflow:auto;padding:15px">
+<b>📊 DAILY REPORT - R<span id="rep-today">0</span></b><br><br>
+<div id="sales-list"></div><br>
+<button onclick="closeReport()" style="background:#FF8C42;border:none;padding:12px;border-radius:8px;font-weight:800;width:100%">CLOSE REPORT</button>
+<button onclick="clearSales()" style="width:100%;padding:12px;background:#500;color:white;border:none;border-radius:10px;margin-top:10px">🗑️ CLEAR TODAY</button>
+</div>
+</div>
+<script>
+const menu = [
+{id:1, name:"Sneck Box", price:150, img:"images/menu1.jpg"},
+{id:2, name:"Pap + Steak + Wors", price:80, img:"images/menu2.jpg"},
+{id:3, name:"Dackwood", price:80, img:"images/menu3.jpg"},
+{id:4, name:"2 Hot Dogs", price:70, img:"images/menu4.jpg"},
+{id:5, name:"Giant Steak Roll", price:140, img:"images/giant--steak.jpg"},
+{id:6, name:"Giant Chicken Roll", price:140, img:"images/giant--chicken.jpg"},
+{id:7, name:"Classic Burger", price:55, img:"images/classic-burger.jpg"},
+{id:8, name:"Cheese Burger", price:65, img:"images/cheese-burger.jpg"},
+{id:9, name:"4 Cheese Burger + Fries", price:160, img:"images/friends-box.jpg"},
+];
+let cart=[]; let sales=JSON.parse(localStorage.getItem('mk_sales')||'[]');
+function login(){if(document.getElementById('pin').value==='1234'){document.getElementById('login').style.display='none';document.getElementById('pos').style.display='block';loadPos();updateToday();}else alert('Wrong PIN! Use 1234');}
+function loadPos(){const g=document.getElementById('pos-grid');g.innerHTML='';menu.forEach(m=>{g.innerHTML+=`<div class="pos-item"><img src="${m.img}" onerror="this.src='images/doorway.jpg'"><h4>${m.name}</h4><div class="price">R${m.price}</div><button onclick="addToCart(${m.id})">+ ADD</button></div>`;});}
+function addToCart(id){cart.push(menu.find(m=>m.id===id));updateCart();}
+function updateCart(){document.getElementById('cart-count').innerText=cart.length;let t=cart.reduce((s,i)=>s+i.price,0);document.getElementById('cart-total').innerText=t;document.getElementById('final-total').innerText=t;document.getElementById('cart-list').innerHTML=cart.map((c,i)=>`<div class="cart-row"><span>${i+1}. ${c.name}</span><span><b>R${c.price}</b> <span onclick="cart.splice(${i},1);updateCart()" style="color:red;cursor:pointer">❌</span></span></div>`).join('');}
+function openCart(){document.getElementById('cart-panel').classList.add('show');}
+function closeCart(){document.getElementById('cart-panel').classList.remove('show');}
+function completeSale(type){if(cart.length==0)return alert('Cart empty');let total=cart.reduce((s,i)=>s+i.price,0);sales.push({time:new Date().toLocaleString(),items:[...cart],total,type});localStorage.setItem('mk_sales',JSON.stringify(sales));alert(`SALE R${total} ${type} OK!`);cart=[];updateCart();closeCart();updateToday();}
+function printReceipt(){let total=cart.reduce((s,i)=>s+i.price,0);let win=window.open('','','width=300,height=600');let items=cart.map(c=>`<div style="display:flex;justify-content:space-between"><span>${c.name}</span><span>R${c.price}</span></div>`).join('');win.document.write(`<body style="font-family:monospace;padding:10px"><center><b>MOONATE KO KASI</b><br>H5224 Musina Ext 14<br>----------------</center><div>${items}</div><div style="border-top:1px dashed #000;margin:10px 0"></div><div style="display:flex;justify-content:space-between;font-weight:bold"><span>TOTAL:</span><span>R${total}</span></div><center><br>Thank you!<br>${new Date().toLocaleString()}</center><script>window.print()<\/script></body>`);}
+function updateToday(){document.getElementById('today-sales').innerText=sales.reduce((s,x)=>s+x.total,0);}
+function showReport(){document.getElementById('report').style.display='block';document.getElementById('rep-today').innerText=sales.reduce((s,x)=>s+x.total,0);document.getElementById('sales-list').innerHTML=sales.slice().reverse().map(s=>`<div style="background:#222;padding:10px;border-radius:8px;margin:5px 0;font-size:11px"><div style="display:flex;justify-content:space-between"><span>${s.time}</span><b>R${s.total} ${s.type}</b></div><div>${s.items.map(i=>i.name).join(', ')}</div></div>`).join('');}
+function closeReport(){document.getElementById('report').style.display='none';}
+function clearSales(){if(confirm('Clear today?')){sales=[];localStorage.setItem('mk_sales','[]');updateToday();closeReport();}}
+</script>
+</body>
+</html>
