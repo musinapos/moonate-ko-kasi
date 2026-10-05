@@ -1,36 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOONATE KO KASI 🌙🔥</title>
+<style>
+body{font-family:Arial;margin:0;background:#FFF8F0;padding-bottom:90px}
+header{background:#111;color:white;padding:15px;text-align:center;position:sticky;top:0;z-index:10}
+header h1{margin:0;color:#FF6600}
+#menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
+.item-card{background:white;border-radius:12px;padding:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);text-align:center}
+.item-card img{width:100%;height:150px;object-fit:cover;border-radius:10px}
+.item-card h3{font-size:13px;margin:8px 0 4px 0;min-height:35px}
+.item-card button{background:#FF6600;color:white;border:none;padding:10px;width:100%;border-radius:8px;font-weight:bold}
+.cart-bar{position:fixed;bottom:0;left:0;right:0;background:#111;color:white;padding:12px;display:flex;justify-content:space-between;align-items:center;z-index:15}
+.cart-bar button{background:#FF6600;color:white;border:none;padding:10px 20px;border-radius:8px;font-weight:bold}
+#cart-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:20;padding:20px}
+.modal-box{background:white;border-radius:15px;padding:20px;max-height:80vh;overflow:auto}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}
+.footer{background:#111;color:white;text-align:center;padding:15px;margin-top:10px;font-size:13px;line-height:1.6}
+.footer a{color:#25D366;text-decoration:none;font-weight:bold}
+</style>
+</head>
+<body>
+
+<header>
+<h1>MOONATE KO KASI 🌙</h1>
+<p style="margin:5px 0 0 0;font-size:13px">🔥 Best Kasi Flavors in Town - Musina Ext 14</p>
+</header>
+
+<div id="menu-grid"></div>
+
+<div class="footer">
+📍 <b>Musina Ext 14, House No 5224</b><br>
+📞 Call: <a href="tel:0680361133">068 036 1133</a><br>
+💬 WhatsApp: <a href="https://wa.me/27799073779">079 907 3779</a> / <a href="https://wa.me/27725660255">072 566 0255</a>
+</div>
+
+<div class="cart-bar">
+<div>🛒 <span id="cart-count">0</span> | R<span id="cart-total">0</span></div>
+<button onclick="openCart()">VIEW CART</button>
+</div>
+
+<div id="cart-modal">
+<div class="modal-box">
+<h2>Your Order 🛒 <span onclick="closeCart()" style="float:right;cursor:pointer">❌</span></h2>
+<div id="cart-items"></div>
+<hr>
+<p><b>Total: R<span id="modal-total">0</span></b></p>
+<input id="cust-name" placeholder="Your Name">
+<input id="cust-address" placeholder="Your Address">
+<button onclick="sendWhatsApp()" style="background:#25D366;color:white;border:none;padding:15px;width:100%;border-radius:10px;font-weight:bold;font-size:16px;margin-top:10px">📱 ORDER ON WHATSAPP</button>
+</div>
+</div>
+
+<script>
 const menu = [
-{id:1, name:"Classic Burger + Small Chips", price:55, img:"menu1.jpg"},
-{id:2, name:"Cheesy Burger + Small Chips", price:65, img:"menu2.jpg"},
-{id:3, name:"Friends Box 4 Burgers + Big Chips", price:160, img:"menu3.jpg"},
-{id:4, name:"Chicken Gatsby Box", price:130, img:"menu4.jpg"},
-{id:5, name:"Steak Gatsby Box", price:140, img:"menu5.jpg"},
-{id:6, name:"Chicken & Steak GIANT + Chips", price:140, img:"menu6.jpg"},
-{id:7, name:"Large Chips", price:35, img:"menu7.jpg"},
+{id:1, name:"Sneck Box", price:150, img:"images/menu1.jpg"},
+{id:2, name:"Pap + Steak + Wors", price:80, img:"images/menu2.jpg"},
+{id:3, name:"Dackwood", price:80, img:"images/menu3.jpg"},
+{id:4, name:"2 Hot Dogs", price:70, img:"images/menu4.jpg"},
+{id:5, name:"Giant Steak", price:140, img:"images/menu5.jpg"},
+{id:6, name:"Giant Chicken", price:140, img:"images/giant-chicken.jpg"},
+{id:7, name:"Classic Burger", price:55, img:"images/classic-burger.jpg"},
+{id:8, name:"Cheese Burger", price:65, img:"images/cheese-burger.jpg"},
+{id:9, name:"4 Cheese Burger + Fries", price:160, img:"images/friends-box.jpg"},
 ];
+
 let cart=[];
 function loadMenu(){
-const grid=document.getElementById('menu-grid'); grid.innerHTML="";
+const grid=document.getElementById('menu-grid');grid.innerHTML="";
 menu.forEach(m=>{
-grid.innerHTML+=`<div class="item-card"><img src="${m.img}"><h3>${m.name}</h3><p>R${m.price}</p><button onclick="addToCart(${m.id})">ADD TO CART</button></div>`;
+grid.innerHTML+=`<div class="item-card"><img src="${m.img}" onerror="this.style.background='#eee'"><h3>${m.name}</h3><p style="font-weight:bold;color:#FF6600;margin:4px 0">R${m.price}</p><button onclick="addToCart(${m.id})">ADD TO CART</button></div>`;
 });
 }
-function addToCart(id){cart.push(menu.find(m=>m.id===id));updateCart();}
-function updateCart(){
-document.getElementById('cart-count').innerText=cart.length;
-let t=cart.reduce((s,i)=>s+i.price,0);
-document.getElementById('cart-total').innerText=t;
-document.getElementById('modal-total').innerText=t;
-document.getElementById('cart-items').innerHTML=cart.map(c=>`<div style="display:flex;justify-content:space-between"><span>${c.name}</span><b>R${c.price}</b></div>`).join('');
-}
+function addToCart(id){const item=menu.find(m=>m.id===id);cart.push(item);updateCart();alert(item.name+" added! 🔥");}
+function updateCart(){document.getElementById('cart-count').innerText=cart.length;let total=cart.reduce((s,i)=>s+i.price,0);document.getElementById('cart-total').innerText=total;document.getElementById('modal-total').innerText=total;document.getElementById('cart-items').innerHTML=cart.map(c=>`<div style="display:flex;justify-content:space-between;margin:8px 0"><span>${c.name}</span><b>R${c.price}</b></div>`).join('');}
 function openCart(){document.getElementById('cart-modal').style.display='block';}
 function closeCart(){document.getElementById('cart-modal').style.display='none';}
 function sendWhatsApp(){
 let name=document.getElementById('cust-name').value;
 let addr=document.getElementById('cust-address').value;
+if(cart.length==0){alert("Cart empty!");return;}
+if(name==""){alert("Enter your name boss");return;}
 let total=cart.reduce((s,i)=>s+i.price,0);
-let text=`Hello MOONATE KO KASI%0AName:${name}%0AAddr:${addr}%0A`;
-cart.forEach(c=>{text+=`-${c.name} R${c.price}%0A`;});
-text+=`TOTAL R${total}`;
+let text=`Hello MOONATE KO KASI 🌙🔥%0A%0AName: ${name}%0AAddress: ${addr}%0A%0AORDER:%0A`;
+cart.forEach(c=>{text+=`- ${c.name} - R${c.price}%0A`;});
+text+=`%0A*TOTAL: R${total}*%0A%0AMusina Ext14 House 5224`;
 window.open(`https://wa.me/27799073779?text=${text}`,'_blank');
 }
 loadMenu();
+</script>
+</body>
+</html>
