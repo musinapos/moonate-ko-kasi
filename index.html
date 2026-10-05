@@ -4,11 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOONATE KO KASI 🌙 - Best Kasi Flavors</title>
+
+<!-- PICTURE DOOR FOR WHATSAPP - FIX 3 ✅ -->
+<meta property="og:title" content="MOONATE KO KASI 🌙 | Giant Rolls & Burgers 🔥">
+<meta property="og:description" content="🔥 Giant Chicken Roll, Giant Steak Roll, Burgers, Kota & More! Tap to order - Fast Delivery in Soshanguve & Pretoria 🏍️ R10-R20">
+<meta property="og:image" content="https://musinapos.github.io/moonate-ko-kasi/images/giant--chicken.jpg">
+<meta property="og:url" content="https://musinapos.github.io/moonate-ko-kasi/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="images/giant--chicken.jpg">
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 *{font-family:'Poppins',Arial;margin:0;padding:0;box-sizing:border-box}
 body{background:#FFF7ED;color:#1f1f1f;padding-bottom:100px}
 header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;padding:0;position:sticky;top:0;z-index:20;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+/* ONLINE APP BOUNCING - FIX 1 ✅ */
+.online-badge{background:#FF8C42;color:#111;text-align:center;padding:5px;font-size:11px;font-weight:800;letter-spacing:2px;animation:bounceBadge 1.2s infinite}
+@keyframes bounceBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
 .hero{display:flex;align-items:center;padding:15px;gap:12px;background:linear-gradient(135deg,#E86A17 0%,#FF8C42 50%,#CC5500 100%)}
 .hero-bike{font-size:52px;animation:bike 2s infinite ease-in-out;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3))}
 @keyframes bike{0%,100%{transform:translateX(0) rotate(-2deg)}50%{transform:translateX(6px) rotate(2deg)}}
@@ -53,6 +66,7 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 <body>
 
 <header>
+<div class="online-badge">🏍️ ONLINE RESTAURANT APP 🏍️</div>
 <div class="hero">
 <div class="hero-bike">🏍️</div>
 <div class="hero-text">
@@ -71,7 +85,7 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 📞 Call: <a href="tel:0680361133">068 036 1133</a><br>
 💬 WhatsApp: <a href="https://wa.me/27799073779">079 907 3779</a> / <a href="https://wa.me/27725660255">072 566 0255</a><br>
 🕒 Open Daily 09:00 - 22:00<br>
-<div class="designed">Designed by Musina Post System ✨</div>
+<div class="designed">Designed by Musina POS Powers Systems ✨</div>
 </div>
 
 <div class="cart-bar">
@@ -101,7 +115,7 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 <button class="btn-card" onclick="pay('card')">💳 PAY WITH CARD</button>
 </div>
 <div style="text-align:center;margin-top:12px"><span onclick="closeCart()" style="cursor:pointer;color:#CC5500;font-weight:700;font-family:Poppins">❌ CLOSE RECEIPT</span></div>
-<div class="small" style="margin-top:15px">Thank you! 🌙🔥<br>Designed by Musina Post System</div>
+<div class="small" style="margin-top:15px">Thank you! 🌙🔥<br>Designed by Musina POS Powers Systems</div>
 </div>
 </div>
 
@@ -111,8 +125,8 @@ const menu = [
 {id:2, name:"Pap + Steak + Wors", price:80, desc:"Real pap + Juicy steak", img:"images/menu2.jpg"},
 {id:3, name:"Dackwood", price:80, desc:"Long cut fries + Toasted", img:"images/menu3.jpg"},
 {id:4, name:"2 Hot Dogs", price:70, desc:"2 Hotdogs + Fries", img:"images/menu4.jpg"},
-{id:5, name:"Giant Steak with chips aside", price:140, desc:"Giant Steak with chips aside 🍟", img:"images/giant--steak.jpg"},
-{id:6, name:"Giant Chicken with chips aside", price:140, desc:"Giant Chicken with chips aside 🍟", img:"images/giant--chicken.jpg"},
+{id:5, name:"Giant Steak Roll", price:140, desc:"Giant Steak Roll with chips aside 🍟", img:"images/giant--steak.jpg"},
+{id:6, name:"Giant Chicken Roll", price:140, desc:"Giant Chicken Roll with chips aside 🍟", img:"images/giant--chicken.jpg"},
 {id:7, name:"Classic Burger", price:55, desc:"Beef + Lettuce + Sauce", img:"images/classic-burger.jpg"},
 {id:8, name:"Cheese Burger", price:65, desc:"Beef + Cheese + Sauce", img:"images/cheese-burger.jpg"},
 {id:9, name:"4 Cheese Burger + Fries", price:160, desc:"Family Box - 4 Burgers + Fries", img:"images/friends-box.jpg"},
