@@ -3,13 +3,13 @@
   "short_name": "MOONATE KASI",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#FFF7ED",
+  "background_color": "#E86A17",
   "theme_color": "#E86A17",
   "icons": [
     {
-      "src": "images/giant--chicken.jpg",
+      "src": "icon.png",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/png"
     }
   ]
 }
