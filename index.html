@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOONATE KO KASI 🌙 - Best Kasi Flavors</title>
 
+<!-- PWA APP FILES - FOR INSTALL -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#E86A17">
+
 <!-- PICTURE DOOR FOR WHATSAPP - FIX 3 ✅ -->
 <meta property="og:title" content="MOONATE KO KASI 🌙 | Giant Rolls & Burgers 🔥">
 <meta property="og:description" content="🔥 Giant Chicken Roll, Giant Steak Roll, Burgers, Kota & More! Tap to order - Fast Delivery in Soshanguve & Pretoria 🏍️ R10-R20">
@@ -19,7 +23,6 @@
 *{font-family:'Poppins',Arial;margin:0;padding:0;box-sizing:border-box}
 body{background:#FFF7ED;color:#1f1f1f;padding-bottom:100px}
 header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;padding:0;position:sticky;top:0;z-index:20;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
-/* ONLINE APP BOUNCING - FIX 1 ✅ */
 .online-badge{background:#FF8C42;color:#111;text-align:center;padding:5px;font-size:11px;font-weight:800;letter-spacing:2px;animation:bounceBadge 1.2s infinite}
 @keyframes bounceBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
 .hero{display:flex;align-items:center;padding:15px;gap:12px;background:linear-gradient(135deg,#E86A17 0%,#FF8C42 50%,#CC5500 100%)}
@@ -30,6 +33,12 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 .delivery-bar{background:#111;color:white;text-align:center;padding:8px;font-size:12px;letter-spacing:0.5px}
 .delivery-bar span{color:#FF8C42;font-weight:700}
 
+/* NEW - INSTALL BOX - ADDED ON TOP - YOUR REQUEST */
+.install-box{background:white;margin:12px;border:2px solid #E86A17;border-radius:18px;padding:18px;text-align:center;box-shadow:0 6px 18px rgba(232,106,23,0.2)}
+@keyframes pulseBtn{0%{transform:scale(1)}50%{transform:scale(1.05);box-shadow:0 0 20px #E86A17}100%{transform:scale(1)}}
+.btn-install{background:linear-gradient(135deg,#E86A17,#CC5500);color:white;border:none;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;width:100%;max-width:340px;animation:pulseBtn 1.2s infinite;cursor:pointer}
+.btn-shop-direct{background:#111;color:white;border:none;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;width:100%;max-width:340px;cursor:pointer;display:block;margin:0 auto;text-decoration:none}
+
 #menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px}
 .item-card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.07);border:1px solid #FFE8D0;display:flex;flex-direction:column}
 .item-card img{width:100%;height:145px;object-fit:cover;background:#FFF0DD}
@@ -38,11 +47,8 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 .card-body .desc{font-size:10px;color:#8a6a4f;margin:4px 0}
 .card-body .price{font-weight:800;color:#CC5500;font-size:16px;margin:6px 0}
 .card-body button{margin-top:auto;background:linear-gradient(135deg,#E86A17,#CC5500);color:white;border:none;padding:10px;border-radius:10px;font-weight:700;font-size:12px;box-shadow:0 3px 8px rgba(204,85,0,0.3)}
-
 .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#111;color:white;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;z-index:30;border-top:3px solid #FF8C42}
 .cart-bar button{background:#FF8C42;color:#111;border:none;padding:10px 22px;border-radius:10px;font-weight:800}
-
-/* RECEIPT STYLE */
 #cart-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.75);z-index:40;padding:16px;overflow:auto}
 .receipt{background:#FFFEF7;width:100%;max-width:380px;margin:20px auto;border-radius:4px;padding:20px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,0.4);font-family:'Courier New',monospace}
 .receipt:before{content:'';position:absolute;top:-10px;left:0;right:0;height:20px;background:radial-gradient(circle, transparent 50%, #FFFEF7 50%);background-size:20px 20px;background-position:0 -10px}
@@ -56,7 +62,6 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 .btn-whatsapp{background:#25D366;color:white}
 .btn-cash{background:#111;color:white}
 .btn-card{background:linear-gradient(135deg,#E86A17,#CC5500);color:white}
-
 .footer{background:#111;color:#aaa;text-align:center;padding:20px;font-size:11px;line-height:1.8;margin-top:10px}
 .footer b{color:white}
 .footer a{color:#FF8C42;text-decoration:none;font-weight:700}
@@ -76,6 +81,16 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 </div>
 <div class="delivery-bar">📍 Musina Ext 14 House 5224 &nbsp;|&nbsp; <span>Delivery R10 - R20 (3KM)</span> &nbsp;|&nbsp; Order before 11am & 5pm</div>
 </header>
+
+<!-- NEW FEATURE - ADDED ON TOP - BEFORE DIV - BOTH OPTIONS ✅ -->
+<div class="install-box">
+  <div style="font-weight:800;font-size:15px;margin-bottom:8px">MOONATE KO KASI 🌙 APP</div>
+  <button class="btn-install" id="installBtn">📲 TAP TO INSTALL APP</button>
+  <div style="font-size:11px;color:#666;margin:8px 0">Install once, order anytime - stays on your phone!</div>
+  <div style="margin:10px 0;font-weight:800;color:#888">— OR —</div>
+  <a href="#menu-grid" class="btn-shop-direct">🛒 GO TO SHOP NOW (No Install Needed)</a>
+  <div style="font-size:11px;color:#666;margin-top:8px">Hungry now? Order straight - we don't lose you!</div>
+</div>
 
 <div id="menu-grid"></div>
 
@@ -104,11 +119,9 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 <div class="line"></div>
 <div class="row" style="font-size:16px"><span>TOTAL:</span><b>R<span id="modal-total">0</span></b></div>
 <div class="line"></div>
-
 <input id="cust-name" placeholder="Your Full Name *">
 <input id="cust-address" placeholder="Your Address + House No *">
 <input id="cust-note" placeholder="Extra note (optional)">
-
 <div class="pay-btns">
 <button class="btn-whatsapp" onclick="pay('whatsapp')">💬 ORDER ON WHATSAPP</button>
 <button class="btn-cash" onclick="pay('cash')">💵 CASH ON DELIVERY</button>
@@ -131,7 +144,6 @@ const menu = [
 {id:8, name:"Cheese Burger", price:65, desc:"Beef + Cheese + Sauce", img:"images/cheese-burger.jpg"},
 {id:9, name:"4 Cheese Burger + Fries", price:160, desc:"Family Box - 4 Burgers + Fries", img:"images/friends-box.jpg"},
 ];
-
 let cart=[];
 function loadMenu(){
 const grid=document.getElementById('menu-grid');grid.innerHTML="";
@@ -172,6 +184,24 @@ window.open(`https://wa.me/27799073779?text=${msg}%0A%0AI WANT TO PAY WITH CARD 
 }
 }
 loadMenu();
+
+// NEW - INSTALL LOGIC - ADDED ON TOP
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt',(e)=>{
+ e.preventDefault();
+ deferredPrompt=e;
+});
+document.getElementById('installBtn').addEventListener('click',async()=>{
+ if(deferredPrompt){
+   deferredPrompt.prompt();
+   const {outcome}=await deferredPrompt.userChoice;
+   if(outcome==='accepted'){alert("✅ Installed! Check your home screen!");}
+   deferredPrompt=null;
+ }else{
+   alert("To install:\n1. Tap ⋮ (top right)\n2. Tap 'Add to Home Screen' or 'Install App'\n3. Tap Install - Moonate Ko Kasi 🌙 will be on your phone!");
+ }
+});
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
 </script>
 </body>
 </html>
