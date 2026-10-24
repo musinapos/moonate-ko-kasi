@@ -1,16 +1,21 @@
 {
   "name": "MOONATE KO KASI 🌙",
-  "short_name": "MOONATE KASI",
-  "start_url": "./index.html?v=2",
+  "short_name": "MOONATE",
+  "description": "Best Kasi Flavors - Giant Rolls & Burgers - Musina & Mbombela",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#E86A17",
+  "background_color": "#FFF7ED",
   "theme_color": "#E86A17",
   "icons": [
     {
-      "src": "icon.png?v=2",
+      "src": "images/giant--chicken.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/giant--chicken.jpg",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/jpeg"
     }
   ]
 }
