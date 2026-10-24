@@ -1,77 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOONATE KO KASI 🌙 - Best Kasi Flavors</title>
-
-<!-- PWA APP FILES - FOR INSTALL -->
+<title>MOONATE KO KASI 🌙 - Best Kasi Flavors | Musina & Mbombela</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#E86A17">
 
-<!-- PICTURE DOOR FOR WHATSAPP - FIX 3 ✅ -->
+<!-- FIXED WHATSAPP PREVIEW -->
 <meta property="og:title" content="MOONATE KO KASI 🌙 | Giant Rolls & Burgers 🔥">
-<meta property="og:description" content="🔥 Giant Chicken Roll, Giant Steak Roll, Burgers, Kota & More! Tap to order - Fast Delivery in Soshanguve & Pretoria 🏍️ R10-R20">
-<meta property="og:image" content="https://musinapos.github.io/moonate-ko-kasi/images/giant--chicken.jpg">
+<meta property="og:description" content="🔥 Giant Chicken Roll R140, Giant Steak Roll, Burgers from R55! Order now - Delivery R10-R20 in Musina Ext 14 (3KM) 🏍️ 0680361133">
+<meta property="og:image" content="https://musinapos.github.io/moonate-ko-kasi/images/giant-chicken.jpg">
 <meta property="og:url" content="https://musinapos.github.io/moonate-ko-kasi/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="images/giant--chicken.jpg">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
 *{font-family:'Poppins',Arial;margin:0;padding:0;box-sizing:border-box}
 body{background:#FFF7ED;color:#1f1f1f;padding-bottom:100px}
 header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;padding:0;position:sticky;top:0;z-index:20;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
-.online-badge{background:#FF8C42;color:#111;text-align:center;padding:5px;font-size:11px;font-weight:800;letter-spacing:2px;animation:bounceBadge 1.2s infinite}
+.online-badge{background:#FF8C42;color:#111;text-align:center;padding:6px;font-size:11px;font-weight:800;letter-spacing:2px;animation:bounceBadge 1.2s infinite}
 @keyframes bounceBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
 .hero{display:flex;align-items:center;padding:15px;gap:12px;background:linear-gradient(135deg,#E86A17 0%,#FF8C42 50%,#CC5500 100%)}
-.hero-bike{font-size:52px;animation:bike 2s infinite ease-in-out;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.3))}
+.hero-bike{font-size:52px;animation:bike 2s infinite ease-in-out}
 @keyframes bike{0%,100%{transform:translateX(0) rotate(-2deg)}50%{transform:translateX(6px) rotate(2deg)}}
 .hero-text h1{font-size:22px;line-height:1;letter-spacing:1px}
 .hero-text p{background:#111;color:#FFB26A;padding:4px 10px;border-radius:20px;display:inline-block;font-size:11px;margin-top:6px;font-weight:700}
-.delivery-bar{background:#111;color:white;text-align:center;padding:8px;font-size:12px;letter-spacing:0.5px}
+.delivery-bar{background:#111;color:white;text-align:center;padding:8px;font-size:11px}
 .delivery-bar span{color:#FF8C42;font-weight:700}
-
-/* NEW - INSTALL BOX - ADDED ON TOP - YOUR REQUEST */
 .install-box{background:white;margin:12px;border:2px solid #E86A17;border-radius:18px;padding:18px;text-align:center;box-shadow:0 6px 18px rgba(232,106,23,0.2)}
 @keyframes pulseBtn{0%{transform:scale(1)}50%{transform:scale(1.05);box-shadow:0 0 20px #E86A17}100%{transform:scale(1)}}
 .btn-install{background:linear-gradient(135deg,#E86A17,#CC5500);color:white;border:none;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;width:100%;max-width:340px;animation:pulseBtn 1.2s infinite;cursor:pointer}
-.btn-shop-direct{background:#111;color:white;border:none;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;width:100%;max-width:340px;cursor:pointer;display:block;margin:0 auto;text-decoration:none}
-
+.btn-shop-direct{background:#111;color:white;border:none;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;width:100%;max-width:340px;cursor:pointer;display:block;margin:0 auto;text-decoration:none;text-align:center}
 #menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px}
 .item-card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.07);border:1px solid #FFE8D0;display:flex;flex-direction:column}
 .item-card img{width:100%;height:145px;object-fit:cover;background:#FFF0DD}
 .card-body{padding:10px;text-align:center;flex:1;display:flex;flex-direction:column}
 .card-body h3{font-size:13px;min-height:32px;line-height:1.2}
-.card-body .desc{font-size:10px;color:#8a6a4f;margin:4px 0}
+.card-body .desc{font-size:10px;color:#8a6a4f;margin:4px 0;min-height:20px}
 .card-body .price{font-weight:800;color:#CC5500;font-size:16px;margin:6px 0}
-.card-body button{margin-top:auto;background:linear-gradient(135deg,#E86A17,#CC5500);color:white;border:none;padding:10px;border-radius:10px;font-weight:700;font-size:12px;box-shadow:0 3px 8px rgba(204,85,0,0.3)}
+.card-body button{margin-top:auto;background:linear-gradient(135deg,#E86A17,#CC5500);color:white;border:none;padding:10px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
 .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#111;color:white;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;z-index:30;border-top:3px solid #FF8C42}
-.cart-bar button{background:#FF8C42;color:#111;border:none;padding:10px 22px;border-radius:10px;font-weight:800}
+.cart-bar button{background:#FF8C42;color:#111;border:none;padding:10px 22px;border-radius:10px;font-weight:800;cursor:pointer}
 #cart-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.75);z-index:40;padding:16px;overflow:auto}
-.receipt{background:#FFFEF7;width:100%;max-width:380px;margin:20px auto;border-radius:4px;padding:20px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,0.4);font-family:'Courier New',monospace}
-.receipt:before{content:'';position:absolute;top:-10px;left:0;right:0;height:20px;background:radial-gradient(circle, transparent 50%, #FFFEF7 50%);background-size:20px 20px;background-position:0 -10px}
-.receipt h2{text-align:center;font-family:Poppins;font-size:18px;margin-bottom:5px}
+.receipt{background:#FFFEF7;width:100%;max-width:380px;margin:20px auto;border-radius:12px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+.receipt h2{text-align:center;font-size:18px}
 .receipt .small{text-align:center;font-size:11px;color:#666;margin-bottom:10px}
 .receipt .line{border-top:1px dashed #999;margin:12px 0}
-.receipt .row{display:flex;justify-content:space-between;font-size:13px;margin:6px 0}
-.receipt input{width:100%;padding:12px;margin:6px 0;border:1px dashed #CC5500;border-radius:8px;background:#FFF8ED;font-family:Poppins;font-size:13px}
+.receipt .row{display:flex;justify-content:space-between;font-size:13px;margin:8px 0;align-items:center}
+.receipt .qty-ctrl{display:flex;gap:6px;align-items:center}
+.receipt .qty-ctrl button{width:26px;height:26px;border-radius:6px;border:1px solid #E86A17;background:white;font-weight:800;cursor:pointer}
+.receipt input{width:100%;padding:12px;margin:6px 0;border:1px dashed #CC5500;border-radius:8px;background:#FFF8ED;font-size:13px}
 .pay-btns{display:grid;gap:8px;margin-top:14px}
-.pay-btns button{padding:14px;border-radius:10px;border:none;font-weight:800;font-size:14px;font-family:Poppins}
+.pay-btns button{padding:14px;border-radius:10px;border:none;font-weight:800;font-size:14px;cursor:pointer}
 .btn-whatsapp{background:#25D366;color:white}
 .btn-cash{background:#111;color:white}
 .btn-card{background:linear-gradient(135deg,#E86A17,#CC5500);color:white}
 .footer{background:#111;color:#aaa;text-align:center;padding:20px;font-size:11px;line-height:1.8;margin-top:10px}
 .footer b{color:white}
 .footer a{color:#FF8C42;text-decoration:none;font-weight:700}
-.footer .designed{margin-top:10px;color:#555;font-size:10px;letter-spacing:1px}
 </style>
 </head>
 <body>
 
 <header>
-<div class="online-badge">🏍️ ONLINE RESTAURANT APP 🏍️</div>
+<div class="online-badge">🏍️ ONLINE RESTAURANT APP - READY FOR MONTH-END OPENING 🏍️</div>
 <div class="hero">
 <div class="hero-bike">🏍️</div>
 <div class="hero-text">
@@ -79,28 +74,27 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 <p>WE DELIVER 3KM 🛵 FAST & HOT</p>
 </div>
 </div>
-<div class="delivery-bar">📍 Musina Ext 14 House 5224 &nbsp;|&nbsp; <span>Delivery R10 - R20 (3KM)</span> &nbsp;|&nbsp; Order before 11am & 5pm</div>
+<div class="delivery-bar">📍 Musina Ext 14 House 5224 | <span>Delivery R10 - R20 (3KM)</span> | Open for Mbombela Launch Prep 09:00 - 22:00</div>
 </header>
 
-<!-- NEW FEATURE - ADDED ON TOP - BEFORE DIV - BOTH OPTIONS ✅ -->
-<div class="install-box">
+<div class="install-box" id="installBox">
   <div style="font-weight:800;font-size:15px;margin-bottom:8px">MOONATE KO KASI 🌙 APP</div>
   <button class="btn-install" id="installBtn">📲 TAP TO INSTALL APP</button>
   <div style="font-size:11px;color:#666;margin:8px 0">Install once, order anytime - stays on your phone!</div>
   <div style="margin:10px 0;font-weight:800;color:#888">— OR —</div>
   <a href="#menu-grid" class="btn-shop-direct">🛒 GO TO SHOP NOW (No Install Needed)</a>
-  <div style="font-size:11px;color:#666;margin-top:8px">Hungry now? Order straight - we don't lose you!</div>
+  <div style="font-size:11px;color:#666;margin-top:8px">Hungry now? Order straight!</div>
 </div>
 
 <div id="menu-grid"></div>
 
 <div class="footer">
 <b>MOONATE KO KASI 🌙🔥</b><br>
-📍 Musina Ext 14, House No 5224<br>
+📍 Musina Ext 14, House No 5224 (Base) - Opening Mbombela Branch This Month-End<br>
 📞 Call: <a href="tel:0680361133">068 036 1133</a><br>
 💬 WhatsApp: <a href="https://wa.me/27799073779">079 907 3779</a> / <a href="https://wa.me/27725660255">072 566 0255</a><br>
 🕒 Open Daily 09:00 - 22:00<br>
-<div class="designed">Designed by Musina POS Powers Systems ✨</div>
+<div style="margin-top:10px;color:#555;font-size:10px;letter-spacing:1px">Designed by Musina POS Powers Systems ✨</div>
 </div>
 
 <div class="cart-bar">
@@ -112,10 +106,10 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 <div class="receipt">
 <h2>MOONATE KO KASI 🌙</h2>
 <div class="small">Musina Ext 14 House 5224<br>Tel: 0680361133<br>----------------------------</div>
-<div id="cart-items"><div style="text-align:center;color:#999;padding:20px">Cart empty</div></div>
+<div id="cart-items"></div>
 <div class="line"></div>
 <div class="row"><span>Subtotal:</span><b>R<span id="sub-total">0</span></b></div>
-<div class="row"><span>Delivery (3KM):</span><b>R<span id="del-fee">15</span></b></div>
+<div class="row"><span>Delivery (3KM):</span><b>R<span id="del-fee">0</span></b></div>
 <div class="line"></div>
 <div class="row" style="font-size:16px"><span>TOTAL:</span><b>R<span id="modal-total">0</span></b></div>
 <div class="line"></div>
@@ -127,8 +121,11 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;paddi
 <button class="btn-cash" onclick="pay('cash')">💵 CASH ON DELIVERY</button>
 <button class="btn-card" onclick="pay('card')">💳 PAY WITH CARD</button>
 </div>
-<div style="text-align:center;margin-top:12px"><span onclick="closeCart()" style="cursor:pointer;color:#CC5500;font-weight:700;font-family:Poppins">❌ CLOSE RECEIPT</span></div>
-<div class="small" style="margin-top:15px">Thank you! 🌙🔥<br>Designed by Musina POS Powers Systems</div>
+<div style="text-align:center;margin-top:12px;display:flex;justify-content:space-between">
+<span onclick="clearCart()" style="cursor:pointer;color:#999;font-weight:700">🗑️ Clear Cart</span>
+<span onclick="closeCart()" style="cursor:pointer;color:#CC5500;font-weight:700">❌ CLOSE</span>
+</div>
+<div class="small" style="margin-top:15px">Thank you! 🌙🔥</div>
 </div>
 </div>
 
@@ -145,63 +142,109 @@ const menu = [
 {id:9, name:"4 Cheese Burger + Fries", price:160, desc:"Family Box - 4 Burgers + Fries", img:"images/friends-box.jpg"},
 ];
 let cart=[];
+
 function loadMenu(){
-const grid=document.getElementById('menu-grid');grid.innerHTML="";
-menu.forEach(m=>{
-grid.innerHTML+=`<div class="item-card"><img src="${m.img}" onerror="this.src='https://via.placeholder.com/300x200?text=${encodeURIComponent(m.name)}'"><div class="card-body"><h3>${m.name}</h3><div class="desc">${m.desc}</div><div class="price">R${m.price}</div><button onclick="addToCart(${m.id})">ADD TO CART</button></div></div>`;
-});
+ const grid=document.getElementById('menu-grid');grid.innerHTML="";
+ menu.forEach(m=>{
+   grid.innerHTML+=`<div class="item-card"><img src="${m.img}" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1568909344668-6f14a07b56a0?w=300&q=80'"><div class="card-body"><h3>${m.name}</h3><div class="desc">${m.desc}</div><div class="price">R${m.price}</div><button onclick="addToCart(${m.id}, this)">ADD TO CART</button></div></div>`;
+ });
 }
-function addToCart(id){const item=menu.find(m=>m.id===id);cart.push(item);updateCart();let b=document.activeElement;b.innerText="ADDED ✅";setTimeout(()=>b.innerText="ADD TO CART",800);}
+
+function addToCart(id, btn){
+ const item=menu.find(m=>m.id===id);
+ // quantity logic
+ let existing=cart.find(c=>c.id===id);
+ if(existing){ existing.qty+=1; } else { cart.push({...item, qty:1}); }
+ updateCart();
+ if(btn){ let old=btn.innerText; btn.innerText="ADDED ✅"; btn.style.background="#25D366"; setTimeout(()=>{btn.innerText=old; btn.style.background="";},900); }
+}
+
+function changeQty(id, delta){
+ let item=cart.find(c=>c.id===id);
+ if(!item) return;
+ item.qty+=delta;
+ if(item.qty<=0){ cart=cart.filter(c=>c.id!==id); }
+ updateCart();
+}
+
+function clearCart(){ cart=[]; updateCart(); }
+
 function updateCart(){
-document.getElementById('cart-count').innerText=cart.length;
-let sub=cart.reduce((s,i)=>s+i.price,0);
-let del= cart.length>0 ? 15 : 0;
-document.getElementById('cart-total').innerText=sub+del;
-document.getElementById('sub-total').innerText=sub;
-document.getElementById('del-fee').innerText=del;
-document.getElementById('modal-total').innerText=sub+del;
-document.getElementById('cart-items').innerHTML= cart.length==0 ? `<div style="text-align:center;color:#999;padding:20px">Cart empty</div>` : cart.map((c,i)=>`<div class="row"><span>${i+1}. ${c.name}</span><b>R${c.price}</b></div>`).join('');
+ let totalItems=cart.reduce((s,c)=>s+c.qty,0);
+ let sub=cart.reduce((s,c)=>s+(c.price*c.qty),0);
+ let del= totalItems>0 ? 15 : 0;
+ document.getElementById('cart-count').innerText=totalItems;
+ document.getElementById('cart-total').innerText=sub+del;
+ document.getElementById('sub-total').innerText=sub;
+ document.getElementById('del-fee').innerText=del;
+ document.getElementById('modal-total').innerText=sub+del;
+ let html="";
+ if(cart.length==0){ html=`<div style="text-align:center;color:#999;padding:20px">Cart empty - Add something tasty 🌙</div>`; }
+ else{
+   cart.forEach((c)=>{
+     html+=`<div class="row"><span>${c.name} <br><small style="color:#888">R${c.price} x ${c.qty}</small></span>
+     <span class="qty-ctrl"><button onclick="changeQty(${c.id},-1)">-</button><b>${c.qty}</b><button onclick="changeQty(${c.id},1)">+</button>&nbsp;<b>R${c.price*c.qty}</b></span></div>`;
+   });
+ }
+ document.getElementById('cart-items').innerHTML=html;
 }
-function openCart(){document.getElementById('cart-modal').style.display='block';}
+
+function openCart(){document.getElementById('cart-modal').style.display='block'; updateCart();}
 function closeCart(){document.getElementById('cart-modal').style.display='none';}
+
 function pay(type){
-let name=document.getElementById('cust-name').value.trim();
-let addr=document.getElementById('cust-address').value.trim();
-let note=document.getElementById('cust-note').value.trim();
-if(cart.length==0){alert("Cart empty boss!");return;}
-if(!name || !addr){alert("Please enter Name + Address boss");return;}
-let sub=cart.reduce((s,i)=>s+i.price,0); let del=15; let total=sub+del;
-let items=cart.map(c=>`- ${c.name} R${c.price}`).join('%0A');
-let msg=`Hello MOONATE KO KASI 🌙🔥%0A%0A*NEW ORDER - ${type.toUpperCase()}*%0A%0AName: ${name}%0AAddress: ${addr}%0ANote: ${note}%0A%0A*ORDER:*%0A${items}%0A%0ASubtotal: R${sub}%0ADelivery: R${del}%0A*TOTAL: R${total}*%0A%0APayment: ${type}%0AFrom: Musina Ext14 H5224 Website`;
-if(type=='whatsapp'){
-window.open(`https://wa.me/27799073779?text=${msg}`,'_blank');
-}else if(type=='cash'){
-window.open(`https://wa.me/27799073779?text=${msg}%0A%0AI WILL PAY CASH ON DELIVERY`,'_blank');
-alert("Order sent! We will call you 0680361133 for Cash on Delivery ✅");
-}else if(type=='card'){
-alert(`Card Payment - Total R${total}\n\nWe will send you YoCo / PayStack link on WhatsApp 0799073779\n\nYour order is saved boss!`);
-window.open(`https://wa.me/27799073779?text=${msg}%0A%0AI WANT TO PAY WITH CARD 💳`,'_blank');
-}
+ let name=document.getElementById('cust-name').value.trim();
+ let addr=document.getElementById('cust-address').value.trim();
+ let note=document.getElementById('cust-note').value.trim();
+ if(cart.length==0){alert("Cart empty boss! Add food first 🍔");return;}
+ if(!name || !addr){alert("Please enter Name + Address boss - so rider finds you!");return;}
+ let sub=cart.reduce((s,c)=>s+(c.price*c.qty),0); let del=15; let total=sub+del;
+ let items=cart.map(c=>`- ${c.name} x${c.qty} = R${c.price*c.qty}`).join('%0A');
+ let msg=`Hello MOONATE KO KASI 🌙🔥%0A%0A*NEW ORDER - ${type.toUpperCase()}*%0A%0AName: ${encodeURIComponent(name)}%0AAddress: ${encodeURIComponent(addr)}%0ANote: ${encodeURIComponent(note)}%0A%0A*ORDER:*%0A${items}%0A%0ASubtotal: R${sub}%0ADelivery: R${del}%0A*TOTAL: R${total}*%0A%0APayment: ${type}%0AFrom: Website - Musina Ext14 H5224`;
+ if(type=='whatsapp'){
+   window.open(`https://wa.me/27799073779?text=${msg}`,'_blank');
+ }else if(type=='cash'){
+   window.open(`https://wa.me/27799073779?text=${msg}%0A%0AI WILL PAY CASH ON DELIVERY`,'_blank');
+   alert(`Order sent! Total R${total} - Cash on Delivery ✅ We will call you!`);
+ }else if(type=='card'){
+   alert(`Card Payment - Total R${total}\n\nWe will send you YoCo / PayStack link on WhatsApp 0799073779`);
+   window.open(`https://wa.me/27799073779?text=${msg}%0A%0AI WANT TO PAY WITH CARD 💳`,'_blank');
+ }
 }
 loadMenu();
 
-// NEW - INSTALL LOGIC - ADDED ON TOP
+// INSTALL LOGIC - FIXED FOR ALL PHONES
 let deferredPrompt;
+const installBtn=document.getElementById('installBtn');
+const installBox=document.getElementById('installBox');
+
 window.addEventListener('beforeinstallprompt',(e)=>{
  e.preventDefault();
  deferredPrompt=e;
+ installBox.style.display='block';
 });
-document.getElementById('installBtn').addEventListener('click',async()=>{
+installBtn.addEventListener('click',async()=>{
  if(deferredPrompt){
    deferredPrompt.prompt();
    const {outcome}=await deferredPrompt.userChoice;
-   if(outcome==='accepted'){alert("✅ Installed! Check your home screen!");}
+   if(outcome==='accepted'){ installBox.innerHTML=`<div style="color:#25D366;font-weight:800">✅ Installed! Check your home screen - MOONATE KO KASI 🌙</div>`; }
    deferredPrompt=null;
  }else{
-   alert("To install:\n1. Tap ⋮ (top right)\n2. Tap 'Add to Home Screen' or 'Install App'\n3. Tap Install - Moonate Ko Kasi 🌙 will be on your phone!");
+   // iPhone / already installed
+   if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+     alert("iPhone: Tap Share button ⬆️ then 'Add to Home Screen' 📲 MOONATE will be on your phone!");
+   }else{
+     alert("To install:\n1. Tap ⋮ (top right)\n2. Tap 'Add to Home Screen' or 'Install App'\n3. Tap Install 🌙");
+   }
  }
 });
-if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+
+// Hide install box if already installed as PWA
+window.addEventListener('appinstalled',()=>{ installBox.style.display='none'; });
+if(window.matchMedia('(display-mode: standalone)').matches){ installBox.style.display='none'; }
+
+// Service worker - safe register
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js').catch(()=>{}); }
 </script>
 </body>
 </html>
