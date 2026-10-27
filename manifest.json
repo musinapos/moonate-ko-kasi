@@ -1,21 +1,24 @@
 {
-  "name": "MOONATE KO KASI 🌙",
+  "name": "MOONATE KO KASI 🌙 - Musina Ext 14",
   "short_name": "MOONATE",
-  "description": "Best Kasi Flavors - Giant Rolls & Burgers - Musina & Mbombela",
-  "start_url": "./",
+  "description": "Kota Moonate R70, Kota Rekamo R50, Kota Chicken Pap Chakalaka - Delivery 3KM Musina",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#FFF7ED",
   "theme_color": "#E86A17",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "images/giant--chicken.jpg",
+      "src": "images/kota-moonate.jpg",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/giant--chicken.jpg",
+      "src": "images/kota-moonate.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any maskable"
     }
   ]
 }
