@@ -6,8 +6,6 @@
 <title>MOONATE KO KASI 🌙 - Musina Ext 14</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#E86A17">
-<meta property="og:title" content="MOONATE KO KASI 🌙 | Kota Moonate R70">
-<meta property="og:image" content="https://musinapos.github.io/moonate-ko-kasi/images/kota-moonate.jpg">
 <link rel="icon" href="images/kota-moonate.jpg">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap');
@@ -16,15 +14,13 @@ body{background:#FFF7ED;color:#1f1f1f;padding-bottom:100px}
 header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;position:sticky;top:0;z-index:20;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
 .online-badge{background:#FF8C42;color:#111;text-align:center;padding:6px;font-size:11px;font-weight:800;letter-spacing:2px}
 .hero{display:flex;align-items:center;padding:15px;gap:12px;background:linear-gradient(135deg,#E86A17 0%,#FF8C42 50%,#CC5500 100%)}
-.hero-bike{font-size:52px}
+.hero-bike{font-size:52px;animation:bikeMove 1.8s infinite ease-in-out,bikeBounce 0.35s infinite ease-in-out;display:inline-block}
+@keyframes bikeMove{0%{transform:translateX(-6px)}50%{transform:translateX(14px)}100%{transform:translateX(-6px)}}
+@keyframes bikeBounce{0%,100%{transform:translateY(0) translateX(var(--x,0))}50%{transform:translateY(-4px) translateX(var(--x,0))}}
 .hero-text h1{font-size:22px;line-height:1}
 .hero-text p{background:#111;color:#FFB26A;padding:4px 10px;border-radius:20px;display:inline-block;font-size:11px;margin-top:6px;font-weight:700}
 .delivery-bar{background:#111;color:white;text-align:center;padding:8px;font-size:11px}
 .delivery-bar span{color:#FF8C42;font-weight:700}
-.install-box{background:white;margin:12px;border:2px solid #E86A17;border-radius:18px;padding:18px;text-align:center;box-shadow:0 6px 18px rgba(232,106,23,0.2)}
-@keyframes pulseBtn{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
-.btn-install{background:linear-gradient(135deg,#E86A17,#CC5500);color:white;border:none;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;width:100%;max-width:340px;animation:pulseBtn 1.2s infinite;cursor:pointer}
-.btn-shop-direct{background:#111;color:white;border:none;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;width:100%;max-width:340px;cursor:pointer;display:block;margin:10px auto 0;text-decoration:none;text-align:center}
 #menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px}
 .item-card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.07);border:1px solid #FFE8D0;display:flex;flex-direction:column;position:relative}
 .item-card img{width:100%;height:145px;object-fit:cover;background:#FFF0DD}
@@ -45,7 +41,7 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 .footer{background:#111;color:#aaa;text-align:center;padding:20px;font-size:11px;line-height:1.8}
 .footer b{color:white}
 .footer a{color:#FF8C42;text-decoration:none;font-weight:700}
-@keyframes pulseRound{0%{transform:scale(1)}50%{transform:scale(1.07)}100%{transform:scale(1)}}
+@keyframes pulseRound{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
 </style>
 </head>
 <body>
@@ -62,14 +58,6 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 <div class="delivery-bar">📍 House 5224, Ext 14 | <span>Delivery R10 - R20 (3KM)</span> | 09:00-22:00</div>
 </header>
 
-<!-- INSTALL BOX - ALWAYS VISIBLE UNTIL INSTALLED -->
-<div class="install-box" id="installBox">
-  <div style="font-weight:800;font-size:15px;margin-bottom:8px">MOONATE KO KASI 🌙 APP</div>
-  <button class="btn-install" id="installBtn">📲 TAP TO INSTALL APP</button>
-  <div style="font-size:11px;color:#666;margin:8px 0">Install once - stays on your phone!</div>
-  <a href="#menu-grid" class="btn-shop-direct">🛒 SHOP NOW</a>
-</div>
-
 <div id="menu-grid"></div>
 
 <div class="footer">
@@ -84,16 +72,16 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 <button onclick="openCart()">RECEIPT 🧾</button>
 </div>
 
-<!-- MEDIUM ROUND BUTTON - ALWAYS VISIBLE -->
-<div id="roundInstallBtn" onclick="installApp()" style="display:flex;position:fixed;bottom:90px;right:14px;z-index:35;background:linear-gradient(135deg,#E86A17,#CC5500);width:56px;height:56px;border-radius:50%;box-shadow:0 4px 15px rgba(232,106,23,0.5);flex-direction:column;align-items:center;justify-content:center;cursor:pointer;animation:pulseRound 1.5s infinite;text-align:center;border:2px solid white">
-  <span style="font-size:20px;line-height:1">📲</span>
-  <span style="font-size:7px;font-weight:800;color:white;line-height:1;margin-top:1px">INSTALL</span>
+<!-- ROUND INSTALL ONLY - 62px -->
+<div id="roundInstallBtn" onclick="installApp()" style="display:flex;position:fixed;bottom:90px;right:14px;z-index:99999;background:linear-gradient(135deg,#E86A17,#CC5500);width:62px;height:62px;border-radius:50%;box-shadow:0 6px 22px rgba(232,106,23,0.6);flex-direction:column;align-items:center;justify-content:center;cursor:pointer;animation:pulseRound 1.5s infinite;text-align:center;border:3px solid white">
+  <span style="font-size:22px;line-height:1">📲</span>
+  <span style="font-size:8px;font-weight:900;color:white;line-height:1;margin-top:2px">INSTALL</span>
 </div>
 
 <div id="cart-modal" onclick="if(event.target==this)closeCart()">
 <div class="receipt">
 <h2 style="text-align:center">MOONATE KO KASI 🌙</h2>
-<div style="text-align:center;font-size:11px;color:#666">Musina Ext 14 House 5224 - 0680361133</div>
+<div style="text-align:center;font-size:11px;color:#666">Musina Ext 14 House 5224</div>
 <div style="border-top:1px dashed #999;margin:12px 0"></div>
 <div id="cart-items"></div>
 <div style="border-top:1px dashed #999;margin:12px 0"></div>
@@ -117,8 +105,6 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 
 <script>
 const menu = [
-{id:1, name:"Sneck Box", price:150, desc:"2 Wings + 4 Pies + 4 Eggs + Sauce ⏳ COMING SOON", img:"images/menu1.jpg", comingSoon:true},
-{id:2, name:"Pap + Steak + Wors", price:80, desc:"Real pap + Juicy steak ⏳ COMING SOON", img:"images/menu2.jpg", comingSoon:true},
 {id:3, name:"Dackwood", price:80, desc:"Long cut fries + Toasted", img:"images/menu3.jpg"},
 {id:4, name:"2 Hot Dogs", price:70, desc:"2 Hotdogs + Fries", img:"images/menu4.jpg"},
 {id:5, name:"Giant Steak Roll", price:140, desc:"Giant Steak Roll with chips aside 🍟", img:"images/giant--steak.jpg"},
@@ -128,9 +114,10 @@ const menu = [
 {id:9, name:"4 Cheese Burger + Fries", price:160, desc:"Family Box - 4 Burgers + Fries", img:"images/friends-box.jpg"},
 {id:10, name:"Kota Rekamo", price:50, desc:"Kota Rekamo: Chips + Polony + Cheese + Atchar + Sauce", img:"images/kota-rekamo.jpg"},
 {id:11, name:"Kota Moonate", price:70, desc:"Kota Moonate Special 🌙: Chips + Polony + Cheese + Vienna + Egg + Russian + Sauce 🔥", img:"images/kota-moonate.jpg"},
-{id:12, name:"Kota Chicken + Pap + Chakalaka", price:90, desc:"Kota Chicken + Pap + Chakalaka + Sides 🍗 Pap + Chicken + Chakalaka", img:"images/kota-chicken-pap.jpg"},
+{id:12, name:"Kota Chicken + Pap + Chakalaka", price:90, desc:"Kota Chicken + Pap + Chakalaka + Sides 🍗", img:"images/kota-chicken-pap.jpg"},
+{id:1, name:"Sneck Box", price:150, desc:"2 Wings + 4 Pies + 4 Eggs + Sauce ⏳ COMING SOON", img:"images/menu1.jpg", comingSoon:true},
+{id:2, name:"Pap + Steak + Wors", price:80, desc:"Real pap + Juicy steak ⏳ COMING SOON", img:"images/menu2.jpg", comingSoon:true},
 ];
-
 let cart=[];
 function loadMenu(){
  const grid=document.getElementById('menu-grid');grid.innerHTML="";
@@ -170,29 +157,21 @@ function pay(type){
  window.open(`https://wa.me/27799073779?text=${msg}`,'_blank'); clearCart(); closeCart();
 }
 loadMenu();
-
-// INSTALL LOGIC - NOW ALWAYS VISIBLE
 let deferredPrompt;
 const roundBtn = document.getElementById('roundInstallBtn');
-const installBox = document.getElementById('installBox');
-const installBtn = document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt',(e)=>{ e.preventDefault(); deferredPrompt=e; });
+window.addEventListener('beforeinstallprompt',(e)=>{ e.preventDefault(); deferredPrompt=e; roundBtn.style.display='flex'; });
 async function installApp(){
  if(deferredPrompt){
    deferredPrompt.prompt();
    const {outcome}=await deferredPrompt.userChoice;
-   if(outcome==='accepted'){ roundBtn.style.display='none'; installBox.innerHTML=`<div style="color:#25D366;font-weight:800">✅ Installed! Check home screen 🌙</div>`; }
+   if(outcome==='accepted'){ roundBtn.style.display='none'; }
    deferredPrompt=null;
  }else{
-   if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
-     alert("iPhone: Tap Share button ⬆️ then 'Add to Home Screen' 📲");
-   }else{
-     alert("To install:\n1. Tap ⋮ top right\n2. Tap 'Install App' or 'Add to Home Screen'\n3. Tap Install 🌙\n\nYour MOONATE app will be on phone!");
-   }
+   if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){ alert("iPhone: Tap Share ⬆️ then 'Add to Home Screen' 📲"); }
+   else{ alert("To install:\n1. Tap ⋮ top right\n2. Tap 'Install App'\n3. Tap Install 🌙"); }
  }
 }
-if(installBtn) installBtn.addEventListener('click', installApp);
-if(window.matchMedia('(display-mode: standalone)').matches){ roundBtn.style.display='none'; installBox.style.display='none'; }
+if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone){ if(roundBtn) roundBtn.style.display='none'; } else { if(roundBtn) roundBtn.style.display='flex'; }
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js').catch(()=>{}); }
 </script>
 </body>
