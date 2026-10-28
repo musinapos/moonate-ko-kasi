@@ -19,6 +19,17 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 .hero-text p{background:#111;color:#FFB26A;padding:4px 10px;border-radius:20px;display:inline-block;font-size:11px;margin-top:6px;font-weight:700}
 .delivery-bar{background:#111;color:white;text-align:center;padding:8px;font-size:11px}
 .delivery-bar span{color:#FF8C42;font-weight:700}
+
+/* VIDEO ADVERT STYLE */
+.video-advert{background:#111;padding:12px}
+.video-box{position:relative;border-radius:16px;overflow:hidden;background:#000;max-width:500px;margin:0 auto;border:2px solid #FF8C42;box-shadow:0 8px 25px rgba(0,0,0,0.4)}
+.video-box video, .video-box img{width:100%;height:220px;object-fit:cover;display:block}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,107,0,0.9);width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;color:white;border:3px solid white;cursor:pointer}
+.ad-badge{position:absolute;top:8px;left:8px;background:red;color:white;font-size:9px;padding:4px 8px;border-radius:20px;font-weight:800}
+.video-info{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.9));padding:25px 12px 10px;color:white;text-align:left}
+.video-info h2{font-size:16px;color:#FF8C42}
+.video-info p{font-size:11px;color:#ddd}
+
 #menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px}
 .item-card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.07);border:1px solid #FFE8D0;display:flex;flex-direction:column;position:relative}
 .item-card img{width:100%;height:145px;object-fit:cover;background:#FFF0DD}
@@ -54,6 +65,19 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 </div>
 <div class="delivery-bar">📍 House 5224, Ext 14 | <span>Delivery R10 - R20 (3KM)</span> | 09:00-22:00</div>
 </header>
+
+<!-- VIDEO ADVERT - YOUR WHOLE MENU IS STILL BELOW -->
+<div class="video-advert">
+<div class="video-box" onclick="playVideo()">
+<div class="ad-badge">🔴 VIDEO ADVERT</div>
+<img id="videoThumb" src="images/kota-moonate.jpg" alt="Advert">
+<div class="play-btn">▶️</div>
+<div class="video-info">
+<h2>MOONATE KO KASI 🌙🔥 - WATCH VIDEO!</h2>
+<p>Tap to play advert! Kota from R50 | Delivery 3KM 🛵</p>
+</div>
+</div>
+</div>
 
 <div id="menu-grid"></div>
 
@@ -153,6 +177,10 @@ function pay(type){
  let items=cart.map(c=>`- ${c.name} x${c.qty} = R${c.price*c.qty}`).join('%0A');
  let msg=`Hello MOONATE KO KASI 🌙🔥%0A%0A*NEW ORDER - ${type.toUpperCase()}*%0A%0AName: ${encodeURIComponent(name)}%0AAddress: ${encodeURIComponent(addr)}%0ANote: ${encodeURIComponent(note)}%0A%0A*ORDER:*%0A${items}%0A%0ASubtotal: R${sub}%0ADelivery: R${del}%0A*TOTAL: R${total}*`;
  window.open(`https://wa.me/27799073779?text=${msg}`,'_blank'); clearCart(); closeCart();
+}
+function playVideo(){
+let box=document.querySelector('.video-box');
+box.innerHTML=`<video controls autoplay style="width:100%;height:220px"><source src="advert.mp4" type="video/mp4">Upload advert.mp4 to root folder</video>`;
 }
 loadMenu();
 
