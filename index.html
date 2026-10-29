@@ -44,6 +44,19 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 </style>
 </head>
 <body>
+
+<!-- WHATSAPP FIX - FORCE OPEN IN CHROME -->
+<div id="wa-fix" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#111;z-index:999999;padding:20px;text-align:center;color:white">
+  <div style="background:white;color:#111;border-radius:16px;padding:20px;max-width:360px;margin:40px auto">
+    <div style="font-size:50px">🌙</div>
+    <h2 style="font-size:18px">MOONATE KO KASI</h2>
+    <p style="font-size:13px;margin:10px 0;line-height:1.6">You opened from WhatsApp.<br>WhatsApp blocks INSTALL.<br><b>Tap button below to open in Chrome & Install:</b></p>
+    <button onclick="openInChrome()" style="width:100%;padding:16px;background:#25D366;color:white;border:none;border-radius:12px;font-weight:800;font-size:15px">📲 OPEN IN CHROME & INSTALL</button>
+    <p style="font-size:11px;color:#666;margin-top:12px">OR: Tap ⋮ top right in WhatsApp > Open in Chrome / Open in Browser</p>
+    <button onclick="document.getElementById('wa-fix').style.display='none'" style="margin-top:10px;background:none;border:none;color:#E86A17;font-weight:700">Continue anyway ></button>
+  </div>
+</div>
+
 <header>
 <div class="online-badge">🏍️ ONLINE - MUSINA EXT 14 ONLY 🏍️</div>
 <div class="hero">
@@ -55,21 +68,27 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 </div>
 <div class="delivery-bar">📍 House 5224, Ext 14 | <span>Delivery R10 - R20 (3KM)</span> | 09:00-22:00</div>
 </header>
+
 <div id="menu-grid"></div>
+
 <div class="footer">
 <b>MOONATE KO KASI 🌙🔥</b><br>
 📍 Musina Ext 14, House 5224<br>
 📞 <a href="tel:0680361133">068 036 1133</a> | 💬 <a href="https://wa.me/27799073779">079 907 3779</a><br>
 <div style="margin-top:10px;color:#555;font-size:10px">Designed by Musina POS Powers Systems ✨</div>
 </div>
+
 <div class="cart-bar">
 <div>🧾 <span id="cart-count">0</span> Items | R<span id="cart-total">0</span></div>
 <button onclick="openCart()">RECEIPT 🧾</button>
 </div>
-<div id="roundInstallBtn" onclick="installApp()" style="display:flex;position:fixed;bottom:90px;right:14px;z-index:99999;background:linear-gradient(135deg,#E86A17,#CC5500);width:62px;height:62px;border-radius:50%;box-shadow:0 6px 22px rgba(232,106,23,0.6);flex-direction:column;align-items:center;justify-content:center;cursor:pointer;animation:pulseRound 1.5s infinite;text-align:center;border:3px solid white">
-  <span style="font-size:22px;line-height:1">📲</span>
-  <span style="font-size:8px;font-weight:900;color:white;line-height:1;margin-top:2px">INSTALL</span>
+
+<!-- INSTALL BUTTON - INCREASED A BIT: 74px -->
+<div id="roundInstallBtn" onclick="installApp()" style="display:flex;position:fixed;bottom:90px;right:14px;z-index:99999;background:linear-gradient(135deg,#E86A17,#CC5500);width:74px;height:74px;border-radius:50%;box-shadow:0 6px 22px rgba(232,106,23,0.6);flex-direction:column;align-items:center;justify-content:center;cursor:pointer;animation:pulseRound 1.5s infinite;text-align:center;border:3px solid white">
+  <span style="font-size:26px;line-height:1">📲</span>
+  <span style="font-size:9px;font-weight:900;color:white;line-height:1;margin-top:3px">INSTALL</span>
 </div>
+
 <div id="cart-modal" onclick="if(event.target==this)closeCart()">
 <div class="receipt">
 <h2 style="text-align:center">MOONATE KO KASI 🌙</h2>
@@ -94,7 +113,19 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 </div>
 </div>
 </div>
+
 <script>
+// WHATSAPP DETECT
+var ua = navigator.userAgent || "";
+var isWA = /WhatsApp|FBAN|FBAV|Instagram/i.test(ua);
+if(isWA){ document.getElementById('wa-fix').style.display='block'; }
+function openInChrome(){
+  var site = "https://musinapos.github.io/moonate-ko-kasi/";
+  var clean = "musinapos.github.io/moonate-ko-kasi/";
+  window.location.href = "intent://" + clean + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(site) + ";end";
+  setTimeout(function(){ alert("iPhone? Tap Share at bottom > Open in Safari > Then Add to Home Screen"); }, 1500);
+}
+
 const menu = [
 {id:3, name:"Dackwood", price:80, desc:"Long cut fries + Toasted + Sauce", img:"images/menu3.jpg"},
 {id:4, name:"2 Hot Dogs", price:70, desc:"2 Hotdogs + Fries + Sauce", img:"images/menu4.jpg"},
@@ -151,7 +182,8 @@ function pay(type){
 loadMenu();
 let deferredPrompt;
 const roundBtn = document.getElementById('roundInstallBtn');
-window.addEventListener('beforeinstallprompt',(e)=>{ e.preventDefault(); deferredPrompt=e; roundBtn.style.display='flex'; });
+roundBtn.style.display = 'flex';
+window.addEventListener('beforeinstallprompt',(e)=>{ e.preventDefault(); deferredPrompt=e; });
 async function installApp(){
  if(deferredPrompt){
    deferredPrompt.prompt();
@@ -159,7 +191,7 @@ async function installApp(){
    if(outcome==='accepted'){ roundBtn.style.display='none'; }
    deferredPrompt=null;
  }else{
-   alert("To install:\n1. Tap ⋮ top right\n2. Tap 'Install App' 🌙");
+   alert("TO INSTALL:\n\nANDROID Chrome:\n1. Tap ⋮ top right\n2. Tap 'Install App' or 'Add to Home screen'\n\nIPHONE Safari:\n1. Tap Share button\n2. Tap 'Add to Home Screen'");
  }
 }
 if(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone){
