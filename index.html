@@ -33,6 +33,13 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 .tag{position:absolute;top:6px;left:6px;color:white;font-size:9px;padding:3px 7px;border-radius:20px;font-weight:700}
 .tag-coming{background:#666}
 .tag-kids{background:#FF8C42;color:#111}
+.chat-box{background:white;margin:14px;border-radius:16px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,0.07);border:1px solid #FFE8D0}
+.chat-box h2{font-size:15px;text-align:center}
+.chat-box input,.chat-box textarea{width:100%;padding:10px;margin:6px 0;border:1px solid #FFD9B0;border-radius:10px;font-size:13px;font-family:inherit}
+.chat-box button{width:100%;padding:12px;border:none;border-radius:10px;background:#E86A17;color:white;font-weight:800;cursor:pointer}
+.comment{border-top:1px dashed #FFD9B0;padding:8px 0;font-size:12px}
+.comment b{color:#CC5500}
+.like-btn{background:#FFF0DD!important;color:#111!important;width:auto!important;padding:6px 12px!important;font-size:12px!important;margin-top:6px}
 .cart-bar{position:fixed;bottom:0;left:0;right:0;background:#111;color:white;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;z-index:30;border-top:3px solid #FF8C42}
 .cart-bar button{background:#FF8C42;color:#111;border:none;padding:10px 22px;border-radius:10px;font-weight:800;cursor:pointer}
 #cart-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.75);z-index:40;padding:16px;overflow:auto}
@@ -52,13 +59,11 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 </head>
 <body>
 
-<!-- ORIGINAL LOGO LOADING DELAY - 3 SECONDS -->
 <div id="splash">
-  <img src="icon.png?v=115" alt="MOONATE KO KASI">
+  <img src="icon.png?v=118" alt="MOONATE KO KASI">
   <p>MOONATE KO KASI 🌙</p>
 </div>
 
-<!-- WHATSAPP FIX - FORCE OPEN IN CHROME -->
 <div id="wa-fix" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#111;z-index:999999;padding:20px;text-align:center;color:white">
   <div style="background:white;color:#111;border-radius:16px;padding:20px;max-width:360px;margin:40px auto">
     <div style="font-size:50px">🌙</div>
@@ -72,7 +77,7 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 
 <header>
 <div class="top-slogan">✨ The Greatest Taste Ever Imagined ✨</div>
-<div class="online-badge">🏍️ ONLINE - MUSINA EXT 14 ONLY 🏍️</div>
+<div class="online-badge">🏍️ ONLINE RESTAURANT APP • ORDER NOW 🏍️</div>
 <div class="hero">
 <div class="hero-bike">🏍️</div>
 <div class="hero-text">
@@ -84,6 +89,17 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 </header>
 
 <div id="menu-grid"></div>
+
+<div class="chat-box">
+<h2>💬 CUSTOMER CHAT • COMMENTS & SUGGESTIONS 💬</h2>
+<p style="text-align:center;font-size:11px;color:#888">Tell us what you loved! Like MOONATE ❤️</p>
+<button id="mainLikeBtn" onclick="likeApp()" style="background:#111;margin:8px 0">❤️ LIKE MOONATE (<span id="likeCount">0</span>)</button>
+<input id="chat-name" placeholder="Your Name">
+<textarea id="chat-msg" placeholder="Your comment / suggestion... e.g. Add chips!"></textarea>
+<button onclick="postComment()">POST COMMENT 💬</button>
+<button onclick="sendSuggestion()" style="background:#25D366;margin-top:6px">📲 SEND SUGGESTION TO BOSS ON WHATSAPP</button>
+<div id="comment-list" style="margin-top:10px"></div>
+</div>
 
 <div class="footer">
 <b>MOONATE KO KASI 🌙🔥</b><br>
@@ -97,7 +113,6 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 <button onclick="openCart()">RECEIPT 🧾</button>
 </div>
 
-<!-- INSTALL BUTTON - INCREASED A BIT: 74px -->
 <div id="roundInstallBtn" onclick="installApp()" style="display:flex;position:fixed;bottom:90px;right:14px;z-index:99999;background:linear-gradient(135deg,#E86A17,#CC5500);width:74px;height:74px;border-radius:50%;box-shadow:0 6px 22px rgba(232,106,23,0.6);flex-direction:column;align-items:center;justify-content:center;cursor:pointer;animation:pulseRound 1.5s infinite;text-align:center;border:3px solid white">
   <span style="font-size:26px;line-height:1">📲</span>
   <span style="font-size:9px;font-weight:900;color:white;line-height:1;margin-top:3px">INSTALL</span>
@@ -129,7 +144,6 @@ header{background:linear-gradient(135deg,#111 0%,#2a1a0a 100%);color:white;posit
 </div>
 
 <script>
-// WHATSAPP DETECT
 var ua = navigator.userAgent || "";
 var isWA = /WhatsApp|FBAN|FBAV|Instagram/i.test(ua);
 if(isWA){ document.getElementById('wa-fix').style.display='block'; }
@@ -193,8 +207,34 @@ function pay(type){
  let msg=`Hello MOONATE KO KASI 🌙🔥%0A%0A*NEW ORDER - ${type.toUpperCase()}*%0A%0AName: ${encodeURIComponent(name)}%0AAddress: ${encodeURIComponent(addr)}%0ANote: ${encodeURIComponent(note)}%0A%0A*ORDER:*%0A${items}%0A%0ASubtotal: R${sub}%0ADelivery: R${del}%0A*TOTAL: R${total}*`;
  window.open(`https://wa.me/27799073779?text=${msg}`,'_blank'); clearCart(); closeCart();
 }
+let likes = parseInt(localStorage.getItem('moonate_likes')||'0');
+document.getElementById('likeCount').innerText = likes;
+function likeApp(){ likes++; localStorage.setItem('moonate_likes', likes); document.getElementById('likeCount').innerText = likes; alert("Thank you! ❤️ You liked MOONATE!"); }
+let comments = JSON.parse(localStorage.getItem('moonate_comments')||'[]');
+function renderComments(){
+  let h = "";
+  if(comments.length==0) h = `<div style="text-align:center;color:#999;font-size:12px;padding:10px">No comments yet. Be the first! 🌙</div>`;
+  comments.forEach((c,i)=>{ h += `<div class="comment"><b>${c.name}</b>: ${c.msg}<br><button class="like-btn" onclick="likeComment(${i})">👍 Like (${c.likes||0})</button></div>`; });
+  document.getElementById('comment-list').innerHTML = h;
+}
+function postComment(){
+  let n = document.getElementById('chat-name').value.trim();
+  let m = document.getElementById('chat-msg').value.trim();
+  if(!n || !m){ alert("Enter Name + Comment Boss!"); return; }
+  comments.unshift({name:n, msg:m, likes:0});
+  localStorage.setItem('moonate_comments', JSON.stringify(comments));
+  document.getElementById('chat-msg').value = "";
+  renderComments();
+}
+function likeComment(i){ comments[i].likes = (comments[i].likes||0)+1; localStorage.setItem('moonate_comments', JSON.stringify(comments)); renderComments(); }
+function sendSuggestion(){
+  let m = document.getElementById('chat-msg').value.trim();
+  let n = document.getElementById('chat-name').value.trim();
+  if(!m){ alert("Write suggestion first!"); return; }
+  window.open(`https://wa.me/27799073779?text=${encodeURIComponent("SUGGESTION from " + n + ": " + m)}`, '_blank');
+}
+renderComments();
 loadMenu();
-// LOGO DELAY - 3 SECONDS FOR CUSTOMER ATTRACTION
 setTimeout(function(){
   var s=document.getElementById('splash');
   if(s){ s.classList.add('hide'); setTimeout(function(){ s.style.display='none'; },600); }
